@@ -1,0 +1,18 @@
+services:
+  web-visualisasi-pltgu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: visualisasi-pltgu:latest
+    container_name: denah-pltgu-container
+    restart: always
+    ports:
+      - "3004:3000"       
+    environment:
+      - TZ=Asia/Jakarta
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:3000/index.html"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s

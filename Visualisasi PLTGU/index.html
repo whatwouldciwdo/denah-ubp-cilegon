@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denah Interaktif PLTGU Cilegon</title>
+    <meta name="description" content="Peta interaktif fasilitas PLTGU Cilegon. Klik bangunan untuk melihat detail.">
+    <!-- Style diimpor melalui src/main.js (Vite) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="dark-mode">
+    <div class="page-wrapper">
+        <!-- ===== TOP BAR ===== -->
+        <header class="top-bar">
+            <div class="top-bar-left">
+                <button id="sidebarToggleBtn" class="sidebar-toggle-btn" title="Buka Menu Navigasi"
+                    aria-label="Menu Navigasi">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+                <img src="pln-logo.svg" alt="PLN Logo" class="logo">
+                <div class="top-bar-text">
+                    <h1 class="top-bar-title">Denah Interaktif PLTGU Cilegon</h1>
+                    <span class="top-bar-subtitle">Pembangkit Listrik Tenaga Gas & Uap</span>
+                </div>
+            </div>
+            <div id="digitalClock" class="digital-clock">
+                <span class="clock-time" id="clockTime">00:00</span>
+                <span class="clock-label">WIB</span>
+            </div>
+        </header>
+
+        <!-- ===== SIDE NAVBAR DRAWER ===== -->
+        <div class="side-navbar-backdrop" id="sideNavbarBackdrop"></div>
+        <aside class="side-navbar" id="sideNavbar" aria-hidden="true">
+            <div class="side-navbar-header">
+                <div class="side-navbar-brand">
+                    <img src="pln-logo.svg" alt="PLN Logo" class="side-navbar-logo">
+                    <div>
+                        <h2 class="side-navbar-title">PLTGU Cilegon</h2>
+                        <span class="side-navbar-subtitle">Navigasi Cepat Website Resmi</span>
+                    </div>
+                </div>
+                <button class="side-navbar-close" id="sideNavbarClose" title="Tutup Menu">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="side-navbar-body">
+                <!-- Section: Navigasi Portal & Aplikasi -->
+                <div class="side-navbar-section">
+                    <h3 class="side-navbar-section-title">
+                        Portal Aplikasi & Website
+                    </h3>
+                    <div class="side-navbar-web-list">
+                        <!-- 1. Denah (Web Project Ini) -->
+                        <a href="#" class="web-nav-btn active" id="btnNavDenah">
+                            <div class="web-nav-text">
+                                <span class="web-nav-title">Denah</span>
+                                <span class="web-nav-desc">Peta Interaktif PLTGU Cilegon</span>
+                            </div>
+                        </a>
+
+                        <!-- 2. REOC -->
+                        <a href="https://pivision.plnindonesiapower.co.id/PIVision/#/Displays/10571/Home-Map-Indonesia"
+                            target="_blank" rel="noopener noreferrer" class="web-nav-btn" id="btnNavReoc"
+                            data-target="reoc">
+                            <div class="web-nav-text">
+                                <span class="web-nav-title">REOC</span>
+                                <span class="web-nav-desc">Reliability & Efficiency Optimization Center</span>
+                            </div>
+                        </a>
+
+                        <!-- 3. Solar Pv -->
+                        <a href="http://10.8.140.120/SmartPower/" target="_blank" rel="noopener noreferrer"
+                            class="web-nav-btn" id="btnNavSolar" data-target="solar-pv">
+                            <div class="web-nav-text">
+                                <span class="web-nav-title">Solar Pv</span>
+                                <span class="web-nav-desc">Monitoring Pembangkit Surya (PV System)</span>
+                            </div>
+                        </a>
+
+                        <!-- 4. PRONIA -->
+                        <a href="https://pronia.plnindonesiapower.co.id/pronia/" target="_blank"
+                            rel="noopener noreferrer" class="web-nav-btn" id="btnNavPronia" data-target="pronia">
+                            <div class="web-nav-text">
+                                <span class="web-nav-title">PRONIA</span>
+                                <span class="web-nav-desc">Portal Manajemen & Operasional PLN</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Section: Informasi -->
+                <div class="side-navbar-section">
+                    <h3 class="side-navbar-section-title">
+                        Informasi Sistem
+                    </h3>
+                    <div class="side-navbar-info-box">
+                        <p><strong>PLTGU Cilegon</strong> — Sistem visualisasi interaktif fasilitas pembangkit listrik
+                            siklus kombinasi (Combined Cycle Power Plant) untuk mendukung pengawasan aset & K3.</p>
+                        <div class="side-navbar-status">
+                            <span class="status-indicator"></span> Sistem Aktif & Sinkron
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="side-navbar-footer">
+                <span>&copy; 2026 PT PLN (Persero) PLTGU Cilegon</span>
+            </div>
+        </aside>
+
+        <!-- ===== MAP AREA ===== -->
+        <main class="map-container" id="mapContainer">
+
+            <!-- ===== MAP VIEW TOGGLE ===== -->
+            <div class="map-view-toggle" id="mapViewToggle">
+                <button class="map-toggle-btn active" data-view="satelit" id="btnSatelit" title="Tampilan Satelit">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M2 12h20" />
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                    </svg>
+                    Satelit
+                </button>
+                <button class="map-toggle-btn" data-view="vektor" id="btnVektor" title="Tampilan Vektor">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <path d="M3 9h18" />
+                        <path d="M9 21V9" />
+                    </svg>
+                    Vektor
+                </button>
+            </div>
+
+            <img src="denah satelit.jpg" alt="Denah PLTGU Cilegon (Satelit)" class="base-map active"
+                id="baseMapSatelit">
+            <img src="denah vector.svg" alt="Denah PLTGU Cilegon (Vektor)" class="base-map" id="baseMapVektor"
+                style="display:none;">
+
+            <!-- ===== SVG OVERLAY SATELIT (koordinat untuk denah satelit) ===== -->
+            <svg class="map-overlay" id="mapOverlaySatelit" viewBox="0 0 8192 4320" preserveAspectRatio="xMidYMid meet">
+
+                <!-- ===== FUEL SYSTEM ===== -->
+                <g data-building-id="b36" class="building-polygon" role="button" tabindex="0" aria-label="b36">
+                    <polygon points="5431,3281 5424,3271 5424,3271 5424,3271 5424,3264 6271,3291 6244,4090 5431,4069" />
+                    <image href="/png/043-36.png" x="5712" y="3506" width="300" height="300"
+                        class="building-icon" />
+                </g>
+
+                <!-- ===== SWITCHYARD ===== -->
+                <g data-building-id="b14" class="building-polygon" role="button" tabindex="0" aria-label="b14">
+                    <polygon points="1315,1602 2762,1677 2742,2483 1335,2469" />
+                    <image href="/png/021-number-14.png" x="1915" y="1922" width="300" height="300"
+                        class="building-icon" />
+                </g>
+
+                <!-- ===== AREA POS JAGA ===== -->
+                <g data-building-id="b65" class="building-polygon" role="button" tabindex="0" aria-label="b65">
+                    <polygon points="693,2850 686,2977 864,2969 864,2850" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="777" y="2912" class="bldg-label" font-size="9">b65</text>
+                    <image href="/png/065-65.png" x="631" y="2783" width="200" height="200" class="building-icon" />
+                </g>
+
+                <!-- ===== FIRE TRUCK STATION ===== -->
+                <g data-building-id="b8" class="building-polygon" role="button" tabindex="0" aria-label="b8">
+                    <polygon points="864,3600 864,3741 1035,3749 1020,3600" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="946" y="3673" class="bldg-label" font-size="9">b8</text>
+                    <image href="/png/003-number-8.png" x="863" y="3588" width="150" height="150" class="building-icon" />
+                </g>
+
+                <!-- ===== UPPK ===== -->
+                <g data-building-id="b70" class="building-polygon" role="button" tabindex="0" aria-label="b70">
+                    <polygon points="701,3615 812,3615 812,3704 708,3704" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="758" y="3660" class="bldg-label" font-size="9">b70</text>
+                    <image href="/png/70.png" x="711" y="3606" width="100" height="100" class="building-icon" />
+                </g>
+
+                <!-- ===== STASIUN GAS ===== -->
+                <g data-building-id="b28" class="building-polygon" role="button" tabindex="0" aria-label="b28">
+                    <polygon points="656,3415 515,3385 582,3095 723,3125" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="619" y="3255" class="bldg-label" font-size="9">b28</text>
+                    <image href="/png/035-28.png" x="542" y="3182" width="150" height="150"
+                        class="building-icon" />
+                </g>
+
+                <!-- ===== RUMAH BIBIT & SOLAR PANEL ===== -->
+                <g data-building-id="b68" class="building-polygon" role="button" tabindex="0" aria-label="b68">
+                    <polygon points="597,3608 656,3704 552,3741 508,3652" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="578" y="3676" class="bldg-label" font-size="9">b68</text>
+                    <image href="/png/68.png" x="472" y="3585" width="200" height="200" class="building-icon" />
+                </g>
+
+                <!-- ===== GEDUNG ADMIN ===== -->
+                <g data-building-id="b22" class="building-polygon" role="button" tabindex="0" aria-label="b22">
+                    <polygon points="1317,2969 1554,2977 1584,3533 1324,3519" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1445" y="3250" class="bldg-label" font-size="9">b22</text>
+                    <image href="/png/029-number-22.png" x="1336" y="3137" width="200" height="200" class="building-icon" />
+                </g>
+
+                <!-- ===== SAFETY CENTER / UPPK ===== -->
+                <g data-building-id="b66" class="building-polygon" role="button" tabindex="0" aria-label="b66">
+                    <polygon points="1250,2702 1243,2821 1391,2821 1399,2702" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1321" y="2762" class="bldg-label" font-size="9">b66</text>
+                    <image href="/png/66.png" x="1272" y="2721" width="100" height="100" class="building-icon" />
+                </g>
+
+                <!-- ===== MASJID ===== -->
+                <g data-building-id="b54" class="building-polygon" role="button" tabindex="0" aria-label="b54">
+                    <polygon points="2067,3207 2237,3326 2312,3147 2141,3066" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="2189" y="3187" class="bldg-label" font-size="9">b54</text>
+                    <image href="/png/013-54.png" x="2086" y="3059" width="200" height="200"
+                        class="building-icon" />
+                </g>
+
+                <!-- ===== AREA POS GATE ===== -->
+                <g data-building-id="b38" class="building-polygon" role="button" tabindex="0" aria-label="b38">
+                    <polygon points="2579,2821 2690,2813 2690,3036 2571,3029" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="2633" y="2925" class="bldg-label" font-size="9">b38</text>
+                    <image href="/png/045-38.png" x="2526" y="2760" width="200" height="200" class="building-icon" />
+                </g>
+
+                <!-- ===== AREA TRAFFO ===== -->
+                <g data-building-id="b4" class="building-polygon" role="button" tabindex="0" aria-label="b4">
+                    <polygon points="3061,2116 3358,2116 3343,2850 3069,2843" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="3208" y="2481" class="bldg-label" font-size="9">b4</text>
+                    <image href="/png/057-number-4.png" x="3142" y="2391" width="150" height="150"
+                        class="building-icon" />
+                </g>
+                <g data-building-id="b4" class="building-polygon" role="button" tabindex="0" aria-label="b4">
+                    <polygon points="3046,1321 3403,1329 3403,1663 3039,1641" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="3223" y="1489" class="bldg-label" font-size="9">b4</text>
+                    <image href="/png/057-number-4.png" x="3149" y="1424" width="150" height="150"
+                        class="building-icon" />
+                </g>
+
+                <!-- ===== AREA RAW WATER TANK ===== -->
+                <g data-building-id="b34" class="building-polygon" role="button" tabindex="0" aria-label="b34">
+                    <polygon points="2764,445 3232,453 3232,854 2787,839" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="3004" y="648" class="bldg-label" font-size="9">b34</text>
+                    <image href="/png/041-34.png" x="2927" y="509" width="200" height="200"
+                        class="building-icon" />
+                </g>
+
+                <!-- ===== AREA DESALINATION A & B ===== -->
+                <g data-building-id="b56" class="building-polygon" role="button" tabindex="0" aria-label="b56">
+                    <polygon points="3277,379 3700,379 3707,972 3284,958" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="3492" y="672" class="bldg-label" font-size="9">b56</text>
+                    <image href="/png/011-56.png" x="3389" y="560" width="250" height="250"
+                        class="building-icon" />
+                </g>
+
+                <!-- ===== GARDU INDUK ===== -->
+                <g data-building-id="b64" class="building-polygon" role="button" tabindex="0" aria-label="b64">
+                    <polygon points="2519,1151 2519,1470 2126,1462 2141,1158" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="2326" y="1310" class="bldg-label" font-size="9">b64</text>
+                    <image href="/png/064-64.png" x="2253" y="1167" width="200" height="200" class="building-icon" />
+                </g>
+
+                <!-- ===== AREA MAKE UP WATERTANK ===== -->
+                <g data-building-id="b29" class="building-polygon" role="button" tabindex="0" aria-label="b29">
+                    <polygon points="2282,1010 2289,520 1960,530 1977,1001" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="2127" y="765" class="bldg-label" font-size="9">b29</text>
+                    <image href="/png/036-29.png" x="2033" y="661" width="200" height="200"
+                        class="building-icon" />
+                </g>
+
+                <!-- ===== TRAFFO CADANGAN ===== -->
+                <g data-building-id="b4" class="building-polygon" role="button" tabindex="0" aria-label="b4">
+                    <polygon points="1466,1280 1633,1280 1640,1416 1466,1416" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1551" y="1348" class="bldg-label" font-size="9">b4</text>
+                    <image href="/png/057-number-4.png" x="1504" y="1298" width="100" height="100"
+                        class="building-icon" />
+                </g>
+
+                <!-- ===== FIRE PUMP STATION ===== -->
+                <g data-building-id="b32" class="building-polygon" role="button" tabindex="0" aria-label="b32">
+                    <polygon points="1269,901 1110,893 1095,605 1292,605" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1192" y="751" class="bldg-label" font-size="9">b32</text>
+                    <image href="/png/039-32.png" x="1111" y="655" width="150" height="150"
+                        class="building-icon" />
+                </g>
+
+                <!-- ===== AREA WATER INTAKE ===== -->
+                <g data-building-id="b40" class="building-polygon" role="button" tabindex="0" aria-label="b40">
+                    <polygon points="4248,848 3884,772 4073,-1 4429,14" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="4159" y="408" class="bldg-label" font-size="9">b40</text>
+                    <image href="/png/048-40.png" x="4068" y="353" width="200" height="200" class="building-icon" />
+                </g>
+
+                <!-- ===== AREA HRSG ===== -->
+                <g data-building-id="b3" class="building-polygon" role="button" tabindex="0" aria-label="b3">
+                    <polygon points="4794,2016 4340,2005 4329,2750 4794,2761" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="4564" y="2383" class="bldg-label" font-size="9">b3</text>
+                    <image href="/png/046-number-3.png" x="4450" y="2250" width="220" height="220"
+                        class="building-icon" />
+                </g>
+
+
+                <!-- ===== CONDENSATE WATER TANK ===== -->
+                <g data-building-id="b12" class="building-polygon" role="button" tabindex="0" aria-label="b12">
+                    <polygon points="4367,1230 4667,1221 4667,1435 4333,1435" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="4509" y="1330" class="bldg-label" font-size="9">b12</text>
+                    <image href="/png/019-number-12.png" x="4448" y="1268" width="100" height="100"
+                        class="building-icon" />
+                </g>
+
+                <!-- ===== TCA COOLER ===== -->
+                <g data-building-id="b5" class="building-polygon" role="button" tabindex="0" aria-label="b5">
+                    <polygon points="5036,1451 5172,1451 5180,1656 5043,1656" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="5108" y="1554" class="bldg-label" font-size="9">b5</text>
+                    <image href="/png/008-number-5.png" x="5054" y="1485" width="100" height="100"
+                        class="building-icon" />
+                </g>
+
+                <!-- ===== AREA CLORINATION PLANT ===== -->
+                <g data-building-id="b19" class="building-polygon" role="button" tabindex="0" aria-label="b19">
+                    <polygon points="4831,1095 4354,1072 4422,360 4808,344" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="4604" y="718" class="bldg-label" font-size="9">b19</text>
+                    <image href="/png/026-number-19.png" x="4461" y="606" width="200" height="200"
+                        class="building-icon" />
+                </g>
+
+                <!-- ===== CCCW PUMP ===== -->
+                <g data-building-id="b18" class="building-polygon" role="button" tabindex="0" aria-label="b18">
+                    <polygon points="4990,2399 5240,2391 5240,3119 4968,3111" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="5110" y="2755" class="bldg-label" font-size="9">b18</text>
+                    <image href="/png/025-number-18.png" x="5020" y="2620" width="220" height="220"
+                        class="building-icon" />
+                </g>
+
+
+                <!-- ===== AREA GUDANG PENYIMPAN PELUMAS ===== -->
+                <g data-building-id="b39" class="building-polygon" role="button" tabindex="0" aria-label="b39">
+                    <polygon points="5248,2361 5779,2383 5786,2702 5983,2724 5968,3119 5256,3119" rx="3" fill="#6b8ba8"
+                        stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="5670" y="2735" class="bldg-label" font-size="9">b39</text>
+                    <image href="/png/047-39.png" x="5322" y="2566" width="200" height="200"
+                        class="building-icon" />
+                </g>
+
+                <!-- ===== WASTE WATER TREATMENT BUILDING ===== -->
+                <g data-building-id="b24" class="building-polygon" role="button" tabindex="0" aria-label="b24">
+                    <polygon points="3944,3128 4060,3128 4060,3231 3944,3231" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="4002" y="3180" class="bldg-label" font-size="9">b24</text>
+                    <image href="/png/031-number-24.png" x="3944" y="3128" width="116" height="116" class="building-icon" />
+                </g>
+
+                                <!-- ===== WASTE WATER TREATMENT PLANT ===== -->
+                <g data-building-id="b25" class="building-polygon" role="button" tabindex="0" aria-label="b25">
+                    <polygon points="4073,3067 4073,3299 3995,3299 3995,3479 4201,3479 4485,3479 4485,3518 4703,3505 4703,3080" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="4301" y="3356" class="bldg-label" font-size="9">b25</text>
+                    <image href="/png/032-number-25.png" x="4201" y="3256" width="200" height="200" class="building-icon" />
+                </g>
+
+                <!-- ===== SEAL PIT ===== -->
+                <g data-building-id="b58" class="building-polygon" role="button" tabindex="0" aria-label="b58">
+                    <polygon points="6195,2800 6141,2861 6284,3005 6345,2930" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="6241" y="2899" class="bldg-label" font-size="9">b58</text>
+                    <image href="/png/009-58.png" x="6181" y="2839" width="120" height="120" class="building-icon" />
+                </g>
+
+                <!-- ===== AREA PERTAMINA / GAS METERING STATION ===== -->
+                <g data-building-id="b28" class="building-polygon" role="button" tabindex="0" aria-label="b28">
+                    <polygon points="6605,3778 7492,3786 7590,3778 7575,4119 6597,4119" rx="3" fill="#6b8ba8"
+                        stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="7172" y="3916" class="bldg-label" font-size="9">b28</text>
+                    <image href="/png/035-28.png" x="6870" y="3829" width="200" height="200"
+                        class="building-icon" />
+                </g>
+
+                <!-- ===== GUDANG & WORKSHOP ===== -->
+                <g data-building-id="b17" class="building-polygon" role="button" tabindex="0" aria-label="b17">
+                    <polygon points="3030,3106 3493,3119 3493,3453 3017,3453" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="3258" y="3283" class="bldg-label" font-size="9">b17</text>
+                    <image href="/png/024-number-17.png" x="3158" y="3183" width="200" height="200" class="building-icon" />
+                </g>
+
+                <!-- ===== GAS TREATMENT STATION ===== -->
+                <g data-building-id="b46" class="building-polygon" role="button" tabindex="0" aria-label="b46">
+                    <polygon points="4452,4061 4460,3614 3687,3629 3702,4069" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="4075" y="3843" class="bldg-label" font-size="9">b46</text>
+                    <image href="/png/054-46.png" x="3996" y="3748" width="200" height="200"
+                        class="building-icon" />
+                </g>
+
+                <!-- ===== STATION GAS COMPRESSOR ===== -->
+                <g data-building-id="b28" class="building-polygon" role="button" tabindex="0" aria-label="b28">
+                    <polygon points="3065,3617 3679,3632 3687,4026 3065,4011" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="3374" y="3822" class="bldg-label" font-size="9">b28</text>
+                    <image href="/png/035-28.png" x="3275" y="3667" width="200" height="200"
+                        class="building-icon" />
+                </g>
+
+                <!-- ===== GAS STORAGE AREA (NITROGEN & CO2 CYLINDERS) ===== -->
+                <g data-building-id="b27" class="building-polygon" role="button" tabindex="0" aria-label="b27">
+                    <polygon points="3506,3113 3686,3113 3686,3447 3493,3447" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="3593" y="3280" class="bldg-label" font-size="9">b27</text>
+                    <image href="/png/034-27.png" x="3493" y="3180" width="200" height="200" class="building-icon" />
+                </g>
+
+                <!-- ===== AREA TITIK PEMBUANGAN (OUTFALL) ===== -->
+                <g data-building-id="b52" class="building-polygon" role="button" tabindex="0" aria-label="b52">
+                    <polygon points="4604,3732 4778,3732 4778,4021 4596,4021" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="4689" y="3877" class="bldg-label" font-size="9">b52</text>
+                    <image href="/png/015-52.png" x="4601" y="3748" width="200" height="200"
+                        class="building-icon" />
+                </g>
+
+                <!-- ===== GEDUNG ENJINERING ===== -->
+                <g data-building-id="b63" class="building-polygon" role="button" tabindex="0" aria-label="b63">
+                    <polygon points="1491,3874 2017,3887 2010,4215 1484,4194" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1751" y="4043" class="bldg-label" font-size="9">b63</text>
+                    <image href="/png/063-63.png" x="1646" y="3942" width="200" height="200" class="building-icon" />
+                </g>
+
+                <!-- ===== GEDUNG K3 / SAFETY CENTER ===== -->
+                <g data-building-id="b62" class="building-polygon" role="button" tabindex="0" aria-label="b62">
+                    <polygon points="2042,4077 2178,4077 2194,4198 2050,4198" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="2116" y="4138" class="bldg-label" font-size="9">b62</text>
+                    <image href="/png/062-62.png" x="2045" y="4080" width="120" height="120" class="building-icon" />
+                </g>
+
+                <!-- ===== AREA OLAHRAGA ===== -->
+                <g data-building-id="b69" class="building-polygon" role="button" tabindex="0" aria-label="b69">
+                    <polygon points="1163,3784 1398,3776 1390,4193 1186,4193" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1284" y="3987" class="bldg-label" font-size="9">b69</text>
+                    <image href="/png/69.png" x="1226" y="3920" width="100" height="100" class="building-icon" />
+                </g>
+
+                <!-- ===== GEDUNG PARKIR ===== -->
+                <g data-building-id="b59" class="building-polygon" role="button" tabindex="0" aria-label="b59">
+                    <polygon points="829,3843 1140,3851 1140,4086 905,4055 829,3987" rx="3" fill="#6b8ba8"
+                        stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="969" y="3964" class="bldg-label" font-size="9">b59</text>
+                    <image href="/png/007-59.png" x="898" y="3839" width="150" height="150"
+                        class="building-icon" />
+                </g>
+
+                <!-- ===== AREA FIRE WATER TANK ===== -->
+                <g data-building-id="b33" class="building-polygon" role="button" tabindex="0" aria-label="b33">
+                    <polygon points="1318,586 1926,586 1917,971 1335,971" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1624" y="779" class="bldg-label" font-size="9">b33</text>
+                    <image href="/png/040-33.png" x="1510" y="638" width="200" height="200"
+                        class="building-icon" />
+                </g>
+
+                <!-- ===== AREA BSM & SAKOPI ===== -->
+                <g data-building-id="b67" class="building-polygon" role="button" tabindex="0" aria-label="b67">
+                    <polygon points="1451,2708 1451,2824 1711,2824 1711,2708" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1581" y="2766" class="bldg-label" font-size="9">b67</text>
+                    <image href="/png/67.png" x="1506" y="2671" width="150" height="150" class="building-icon" />
+                </g>
+
+                <!-- ===== LABORATORY ===== -->
+                <g data-building-id="b61" class="building-polygon" role="button" tabindex="0" aria-label="b61">
+                    <polygon points="2325,566 2482,566 2482,982 2325,975" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="2404" y="772" class="bldg-label" font-size="9">b61</text>
+                    <image href="/png/061-61.png" x="2340" y="700" width="130" height="130" class="building-icon" />
+                </g>
+
+                <!-- ===== WATER INJECTION PUMP ===== --> 
+                <g data-building-id="b16" class="building-polygon" role="button" tabindex="0" aria-label="b16"> 
+                    <polygon points="5060,1839 5192,1839 5192,2341 5036,2329" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" /> 
+                    <text x="5120" y="2087" class="bldg-label" font-size="9">b16</text> 
+                    <image href="/png/023-number-16.png" x="5017" y="1999" width="200" height="200" class="building-icon" />
+                </g> 
+
+                <!-- ===== FUEL OIL UNLOADING PUMP AREA ===== --> 
+                <g data-building-id="b42" class="building-polygon" role="button" tabindex="0" aria-label="b42"> 
+                    <polygon points="4941,3293 5084,3293 5084,3616 4929,3616" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" /> 
+                    <text x="5010" y="3455" class="bldg-label" font-size="9">b42</text> 
+                    <image href="/png/050-42.png" x="4933" y="3362" width="150" height="150" class="building-icon" />
+                </g> 
+
+                <!-- ===== FUEL OIL RECEIVING TANK ===== --> 
+                <g data-building-id="b57" class="building-polygon" role="button" tabindex="0" aria-label="b57"> 
+                    <polygon points="5168,3293 5347,3293 5335,3508 5144,3497" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" /> 
+                    <text x="5249" y="3398" class="bldg-label" font-size="9">b57</text> 
+                    <image href="/png/010-57.png" x="5179" y="3321" width="150" height="150" class="building-icon" />
+                </g>
+
+                <!-- ===== HSD TREATMEN PLANT ===== --> 
+                <g data-building-id="b55" class="building-polygon" role="button" tabindex="0" aria-label="b55"> 
+                    <polygon points="5228,3621 5311,3621 5299,3944 5228,3932" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" /> 
+                    <text x="5267" y="3780" class="bldg-label" font-size="9">b55</text> 
+                    <image href="/png/012-55.png" x="5186" y="3683" width="150" height="150" class="building-icon" />
+                </g> 
+
+                <!-- ===== FOAM SPARE BOTTLE SPACE ===== --> 
+                <g data-building-id="b48" class="building-polygon" role="button" tabindex="0" aria-label="b48"> 
+                    <polygon points="5264,4011 5395,4011 5395,4107 5264,4107" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" /> 
+                    <text x="5330" y="4059" class="bldg-label" font-size="9">b48</text> 
+                    <image href="/png/056-48.png" x="5274" y="3997" width="110" height="110" class="building-icon" />
+                </g> 
+
+                <!-- ===== OIL SEPARETOR FOR DISTILLATE OIL TANK YARD ===== --> 
+                <g data-building-id="b15" class="building-polygon" role="button" tabindex="0" aria-label="b15"> 
+                    <polygon points="6280,3341 6388,3341 6388,3688 6268,3688" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" /> 
+                    <text x="6331" y="3515" class="bldg-label" font-size="9">b15</text> 
+                    <image href="/png/022-number-15.png" x="6257" y="3425" width="150" height="150" class="building-icon" />
+                </g>
+
+                <!-- ===== DEMIN PLANT ===== -->
+                <g data-building-id="b30" class="building-polygon" role="button" tabindex="0" aria-label="b30">
+                    <polygon points="2513,741 2641,741 2630,985 2490,974" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="2569" y="860" class="bldg-label" font-size="9">b30</text>
+                    <image href="/png/037-30.png" x="2500" y="790" width="130" height="130" class="building-icon" />
+                </g>
+
+                <!-- ===== SERVICE PUMP ===== -->
+                <g data-building-id="b47" class="building-polygon" role="button" tabindex="0" aria-label="b47">
+                    <polygon points="2676,869 2886,881 2886,974 2676,974" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="2781" y="925" class="bldg-label" font-size="9">b47</text>
+                    <image href="/png/055-47.png" x="2720" y="865" width="120" height="120" class="building-icon" />
+                </g>
+
+                <!-- ===== EDG (EMER DIESEL GEN) ===== -->
+                <g data-building-id="b35" class="building-polygon" role="button" tabindex="0" aria-label="b35">
+                    <polygon points="2607,1172 2781,1172 2769,1474 2595,1474" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="2688" y="1323" class="bldg-label" font-size="9">b35</text>
+                    <image href="/png/042-35.png" x="2625" y="1250" width="130" height="130" class="building-icon" />
+                </g>
+
+                <!-- ===== GT 1 & GT 2 ===== -->
+                <g data-building-id="b1" class="building-polygon" role="button" tabindex="0" aria-label="b1">
+                    <polygon points="4340,1940 3398,1928 3386,2801 4317,2812" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="3860" y="2370" class="bldg-label" font-size="9">b1</text>
+                    <image href="/png/001-number-1.png" x="3720" y="2230" width="240" height="240" class="building-icon" />
+                </g>
+
+                <!-- ===== STEAM TURBINE ===== -->
+                <g data-building-id="b2" class="building-polygon" role="button" tabindex="0" aria-label="b2">
+                    <polygon points="4305,1730 3409,1707 3421,1230 4317,1253" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="3863" y="1480" class="bldg-label" font-size="9">b2</text>
+                    <image href="/png/002-number-2.png" x="3740" y="1360" width="220" height="220" class="building-icon" />
+                </g>
+
+                <!-- ===== ELECTRICAL BUILDING ===== -->
+                <g data-building-id="b31" class="building-polygon" role="button" tabindex="0" aria-label="b31">
+                    <polygon points="3375,2033 3375,1672 3014,1660 3025,2033" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="3197" y="1850" class="bldg-label" font-size="9">b31</text>
+                    <image href="/png/038-31.png" x="3120" y="1770" width="150" height="150" class="building-icon" />
+                </g>
+
+                <!-- ===== RUANG CCR ===== -->
+                <g data-building-id="b51" class="building-polygon" role="button" tabindex="0" aria-label="b51">
+                    <polygon points="4131,1928 4131,1730 3409,1719 3398,1916" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="3767" y="1823" class="bldg-label" font-size="9">b51</text>
+                    <image href="/png/060-51.png" x="3700" y="1750" width="140" height="140" class="building-icon" />
+                </g>
+
+                <!-- ===== AUX BOILER ===== -->
+                <g data-building-id="b21" class="building-polygon" role="button" tabindex="0" aria-label="b21">
+                    <polygon points="4561,1481 4771,1481 4771,1679 4550,1679" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="4663" y="1580" class="bldg-label" font-size="9">b21</text>
+                    <image href="/png/028-number-21.png" x="4600" y="1520" width="130" height="130" class="building-icon" />
+                </g>
+
+
+
+
+
+                <!-- ===== JALAN INDUSTRI ===== -->
+                <g class="industrial-routes">
+                    <!-- Rute 1 -->
+                    <polyline class="jalan-industri" points="386,3500 980,3514 1001,2933 1294,2947 1281,3677" />
+                    <!-- Rute 2 -->
+                    <polyline class="jalan-industri" points="1294,2947 2946,2961 2974,1111 1151,1076 1158,885" />
+                    <!-- Rute 3 -->
+                    <polyline class="jalan-industri" points="2946,2961 2926,4067 4858,4135" />
+                    <!-- Rute 4 -->
+                    <polyline class="jalan-industri" points="4858,4138 6408,4165 6408,3926 6599,3946" />
+                    <!-- Rute 5 -->
+                    <polyline class="jalan-industri" points="6408,3929 6414,3553 7548,3567" />
+                    <!-- Rute 6 -->
+                    <polyline class="jalan-industri" points="6421,3537 6408,3250 6210,3182 6005,3182 6005,2950" />
+                    <!-- Rute 7 -->
+                    <polyline class="jalan-industri" points="6005,3182 4844,3148 4844,2363 4489,2356" />
+                    <!-- Rute 8 -->
+                    <polyline class="jalan-industri" points="4851,2359 4858,1218 4633,1157 4557,1143 4564,918" />
+                    <!-- Rute 9 -->
+                    <polyline class="jalan-industri" points="4551,1139 4489,1139 4489,1501" />
+                    <!-- Rute 10 -->
+                    <polyline class="jalan-industri" points="4489,1134 2967,1100" />
+                    <!-- Rute 11 -->
+                    <polyline class="jalan-industri" points="3458,1111 3452,1343" />
+                    <!-- Rute 12 -->
+                    <polyline class="jalan-industri" points="4271,1120 4366,478" />
+                    <!-- Rute 13 -->
+                    <polyline class="jalan-industri" points="4844,3141 4837,4131" />
+                    <!-- Rute 14 -->
+                    <polyline class="jalan-industri" points="2933,2957 4844,2998" />
+                    <!-- Rute 15 -->
+                    <polyline class="jalan-industri" points="3301,2962 3295,3058" />
+                    <!-- Rute 16 -->
+                    <polyline class="jalan-industri" points="4018,2984 4018,3100" />
+                    <!-- Rute 17 -->
+                    <polyline class="jalan-industri" points="2414,1096 2414,1000" />
+                    <!-- Rute 18 -->
+                    <polyline class="jalan-industri" points="2086,1086 2079,1591" />
+                    <!-- Rute 19 -->
+                    <polyline class="jalan-industri" points="3547,2970 3547,3114" />
+                    <!-- Rute 20 -->
+                    <polyline class="jalan-industri" points="3493,1104 3493,653" />
+                </g>
+
+                <!-- ===== DAFTAR BANGUNAN (embedded panel) ===== -->
+                <foreignObject x="6090" y="180" width="1900" height="2300" class="daftar-bangunan-fo">
+                    <div xmlns="http://www.w3.org/1999/xhtml" class="daftar-bangunan-wrapper" id="cariCepatWrapper">
+                        <div class="daftar-bangunan-header" id="btnCariCepat">
+                            📋 Daftar Bangunan
+                        </div>
+                        <div class="daftar-bangunan-content">
+                            <ul class="building-list" id="buildingList">
+                                <!-- List bangunan akan dimasukkan lewat JavaScript -->
+                            </ul>
+                        </div>
+                    </div>
+                </foreignObject>
+
+            </svg>
+
+            <!-- ===== SVG OVERLAY VEKTOR (koordinat untuk denah vektor — akan diisi via mapper) ===== -->
+            <svg class="map-overlay" id="mapOverlayVektor" viewBox="0 0 2752 1536" preserveAspectRatio="xMidYMid meet"
+                style="display:none;">
+                <!-- ===== AREA MAKE UP WATERTANK ===== -->
+                <g data-building-id="b16" class="building-polygon" role="button" tabindex="0" aria-label="b16">
+                    <polygon points="836,372 831,494 939,498 941,372" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="887" y="434" class="bldg-label" font-size="9">b16</text>
+                    <image href="/png/023-number-16.png" x="858" y="389" width="60" height="60"
+                        class="building-icon" />
+                </g>
+                <g data-building-id="b1" class="building-polygon" role="button" tabindex="0" aria-label="b1">
+                    <polygon points="1888,1177 2127,1183 2127,1427 1884,1420" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="2007" y="1302" class="bldg-label" font-size="9">b1</text>
+                    <image href="/png/001-number-1.png" x="1935" y="1210" width="150" height="150"
+                        class="building-icon" />
+                </g>
+                <!-- ===== SWITCH YARD ===== -->
+                <g data-building-id="b2" class="building-polygon" role="button" tabindex="0" aria-label="b2">
+                    <polygon points="636,679 1088,688 1083,952 632,945" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="860" y="816" class="bldg-label" font-size="9">b2</text>
+                    <image href="/png/002-number-2.png" x="810" y="716" width="150" height="150"
+                        class="building-icon" />
+                </g>
+                <!-- ===== AREA POS JAGA ===== -->
+                <g data-building-id="b3" class="building-polygon" role="button" tabindex="0" aria-label="b3">
+                    <polygon points="505,1060 505,1099 549,1101 549,1060" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="527" y="1080" class="bldg-label" font-size="9">b3</text>
+                    <image href="/png/046-number-3.png" x="507" y="1060" width="40" height="40" class="building-icon" />
+                </g>
+                <!-- ===== FIRE TRUCK STATION ===== -->
+                <g data-building-id="b4" class="building-polygon" role="button" tabindex="0" aria-label="b4">
+                    <polygon points="501,1326 563,1328 563,1282 501,1282" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="532" y="1305" class="bldg-label" font-size="9">b4</text>
+                    <image href="/png/057-number-4.png" x="496" y="1260" width="76" height="74" class="building-icon" />
+
+                </g>
+                <!-- ===== UNIT PELAYANAN KESEHATAN KERJA (UPPK) ===== -->
+                <g data-building-id="b5" class="building-polygon" role="button" tabindex="0" aria-label="b5">
+                    <polygon points="453,1284 453,1312 487,1312 487,1283" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="470" y="1298" class="bldg-label" font-size="9">b5</text>
+                    <image href="/png/008-number-5.png" x="446" y="1265" width="50" height="50"
+                        class="building-icon" />
+                </g>
+                <!-- ===== STASIUN GAS ===== -->
+                <g data-building-id="b6" class="building-polygon" role="button" tabindex="0" aria-label="b6">
+                    <polygon points="402,1217 444,1228 460,1162 418,1153" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="431" y="1190" class="bldg-label" font-size="9">b6</text>
+                    <image href="/png/005-number-6.png" x="401" y="1145" width="62" height="82" class="building-icon" />
+                </g>
+                <!-- ===== RUMAH BIBIT ===== -->
+                <g data-building-id="b7" class="building-polygon" role="button" tabindex="0" aria-label="b7">
+                    <polygon points="402,1303 432,1291 441,1314 407,1326" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="421" y="1309" class="bldg-label" font-size="9">b7</text>
+                    <image href="/png/004-number-7.png" x="400" y="1275" width="50" height="50" class="building-icon" />
+                </g>
+                <!-- ===== GEDUNG ADMIN ===== -->
+                <g data-building-id="b8" class="building-polygon" role="button" tabindex="0" aria-label="b8">
+                    <polygon points="655,1109 730,1112 726,1252 648,1252" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="690" y="1181" class="bldg-label" font-size="9">b8</text>
+                    <image href="/png/003-number-8.png" x="670" y="1150" width="60" height="70" class="building-icon" />
+                </g>
+
+
+                <!-- ===== SAFETY CENTER ===== -->
+                <g data-building-id="b9" class="building-polygon" role="button" tabindex="0" aria-label="b9">
+                    <polygon points="620,1022 659,1022 659,1064 620,1064" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="640" y="1043" class="bldg-label" font-size="9">b9</text>
+                    <image href="/png/016-number-9.png" x="620" y="1030" width="40" height="40" class="building-icon" />
+                </g>
+                <!-- ===== MASJID ===== -->
+                <g data-building-id="b10" class="building-polygon" role="button" tabindex="0" aria-label="b10">
+                    <polygon points="886,1136 941,1157 918,1200 868,1174" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="903" y="1167" class="bldg-label" font-size="9">b10</text>
+                    <image href="/png/018-number-10.png" x="860" y="1120" width="90" height="60" class="building-icon" />
+                </g>
+                <!-- ===== AREA POS GATE ===== -->
+                <g data-building-id="b11" class="building-polygon" role="button" tabindex="0" aria-label="b11">
+                    <polygon points="1024,1047 1058,1047 1058,1063 1021,1061" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1040" y="1055" class="bldg-label" font-size="9">b11</text>
+                    <image href="/png/017-number-11.png" x="1022" y="1025" width="40" height="40" class="building-icon" />
+                </g>
+                <!-- ===== AREA TRAFFO ===== -->
+                <g data-building-id="b12" class="building-polygon" role="button" tabindex="0" aria-label="b12">
+                    <polygon points="1152,825 1267,827 1267,1075 1154,1070" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1210" y="949" class="bldg-label" font-size="9">b12</text>
+                    <image href="/png/019-number-12.png" x="1170" y="890" width="80" height="80"
+                        class="building-icon" />
+                </g>
+                <!-- ===== AREA TRAFFO ===== -->
+                <g data-building-id="b12" class="building-polygon" role="button" tabindex="0" aria-label="b12">
+                    <polygon points="1159,571 1274,573 1271,690 1154,688" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1215" y="631" class="bldg-label" font-size="9">b12</text>
+                    <image href="/png/019-number-12.png" x="1175" y="581" width="80" height="80"
+                        class="building-icon" />
+                </g>
+                <!-- ===== AREA RAW WATER TANK ===== -->
+                <g data-building-id="b13" class="building-polygon" role="button" tabindex="0" aria-label="b13">
+                    <polygon points="1083,331 1081,436 1214,436 1214,328" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1148" y="383" class="bldg-label" font-size="9">b13</text>
+                    <image href="/png/020-number-13.png" x="1108" y="333" width="100" height="100"
+                        class="building-icon" />
+                </g>
+                <!-- ===== AREA DESALINATION A & B ===== -->
+                <g data-building-id="b14" class="building-polygon" role="button" tabindex="0" aria-label="b14">
+                    <polygon points="1239,303 1386,305 1377,498 1235,491" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1309" y="399" class="bldg-label" font-size="9">b14</text>
+                    <image href="/png/021-number-14.png" x="1259" y="349" width="100" height="100" class="building-icon" />
+                </g>
+                <!-- ===== GARDU INDUK ===== -->
+                <g data-building-id="b15" class="building-polygon" role="button" tabindex="0" aria-label="b15">
+                    <polygon points="898,544 1010,544 1008,629 898,626" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="954" y="586" class="bldg-label" font-size="9">b15</text>
+                    <image href="/png/022-number-15.png" x="914" y="536" width="80" height="80" class="building-icon" />
+                </g>
+                <!-- ===== TRAFFO CADANGAN ===== -->
+                <g data-building-id="b17" class="building-polygon" role="button" tabindex="0" aria-label="b17">
+                    <polygon points="698,591 733,593 733,621 698,618" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="716" y="606" class="bldg-label" font-size="9">b17</text>
+                    <image href="/png/024-number-17.png" x="690" y="576" width="50" height="50"
+                        class="building-icon" />
+                </g>
+                <!-- ===== FIRE PUMP STATION ===== -->
+                <g data-building-id="b18" class="building-polygon" role="button" tabindex="0" aria-label="b18">
+                    <polygon points="572,369 567,490 643,492 645,369" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="607" y="430" class="bldg-label" font-size="9">b18</text>
+                    <image href="/png/025-number-18.png" x="567" y="380" width="70" height="70"
+                        class="building-icon" />
+
+                </g>
+                <!-- ===== AREA WATER INTAKE ===== -->
+                <g data-building-id="b19" class="building-polygon" role="button" tabindex="0" aria-label="b19">
+                    <polygon points="1515,449 1432,437 1531,-1 1595,4" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1518" y="222" class="bldg-label" font-size="9">b19</text>
+                    <image href="/png/026-number-19.png" x="1488" y="172" width="100" height="100" class="building-icon" />
+                </g>
+
+                <!-- ===== AREA HRSG ===== -->
+                <g data-building-id="b20" class="building-polygon" role="button" tabindex="0" aria-label="b20">
+                    <polygon points="1693,810 1579,810 1583,998 1689,998" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1636" y="904" class="bldg-label" font-size="9">b20</text>
+                    <image href="/png/027-number-20.png" x="1600" y="860" width="80" height="80"
+                        class="building-icon" />
+                </g>
+
+
+                <!-- ===== CONDENSATE WATER TANK ===== -->
+                <g data-building-id="b21" class="building-polygon" role="button" tabindex="0" aria-label="b21">
+                    <polygon points="1551,567 1684,564 1684,796 1556,794" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1619" y="680" class="bldg-label" font-size="9">b21</text>
+                    <image href="/png/028-number-21.png" x="1579" y="630" width="100" height="100"
+                        class="building-icon" />
+                </g>
+
+                <!-- ===== AREA BANGUNAN K3 KECIL ===== -->
+                <g data-building-id="b22" class="building-polygon" role="button" tabindex="0" aria-label="b22">
+                    <polygon points="1771,610 1810,610 1810,672 1771,672" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1791" y="641" class="bldg-label" font-size="9">b22</text>
+                    <image href="/png/029-number-22.png" x="1766" y="618" width="50" height="50" class="building-icon" />
+                </g>
+
+                <!-- ===== AREA CLORINATION PLANT ===== -->
+                <g data-building-id="b23" class="building-polygon" role="button" tabindex="0" aria-label="b23">
+                    <polygon points="1574,514 1703,516 1693,296 1581,298" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1638" y="406" class="bldg-label" font-size="9">b23</text>
+                    <image href="/png/030-number-23.png" x="1591" y="370" width="80" height="80" class="building-icon" />
+                </g>
+                <!-- ===== AREA SOLAR PANEL ===== -->
+                <g data-building-id="b24" class="building-polygon" role="button" tabindex="0" aria-label="b24">
+                    <polygon points="1742,919 1826,919 1824,1132 1742,1130" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1784" y="1025" class="bldg-label" font-size="9">b24</text>
+                    <image href="/png/031-number-24.png" x="1720" y="850" width="100" height="300"
+                        class="building-icon" />
+                </g>
+                <!-- ===== AREA GUDANG PENYIMPAN PELUMAS ===== -->
+                <g data-building-id="b25" class="building-polygon" role="button" tabindex="0" aria-label="b25">
+                    <polygon points="1831,904 1831,1039 1982,1041 2017,1092 2044,1094 2056,1016 1980,906" rx="3"
+                        fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1963" y="1013" class="bldg-label" font-size="9">b25</text>
+                    <image href="/png/032-number-25.png" x="1973" y="983" width="80" height="80"
+                        class="building-icon" />
+                    <image href="/png/032-number-25.png" x="1870" y="940" width="80" height="80"
+                        class="building-icon" />
+                </g>
+                <!-- ===== AREA AIR LIMBAH WWTP ===== -->
+                <g data-building-id="b26" class="building-polygon" role="button" tabindex="0" aria-label="b26">
+                    <polygon points="1363,1107 1368,1266 1675,1270 1673,1110" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1520" y="1188" class="bldg-label" font-size="9">b26</text>
+                    <image href="/png/033-26.png" x="1480" y="1138" width="80" height="80"
+                        class="building-icon" />
+                </g>
+                <!-- ===== AREA AIR LIMBAH DESALINASI ===== -->
+                <g data-building-id="b27" class="building-polygon" role="button" tabindex="0" aria-label="b27">
+                    <polygon points="2081,1055 2276,1252 2751,1257 2748,1195 2306,1190 2113,1023" rx="3" fill="#6b8ba8"
+                        stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="2379" y="1162" class="bldg-label" font-size="9">b27</text>
+                    <image href="/png/034-27.png" x="2315" y="1172" width="80" height="80" class="building-icon" />
+
+                </g>
+                <!-- ===== AREA PERTAMINA / GAS METERING STATION ===== -->
+                <g data-building-id="b28" class="building-polygon" role="button" tabindex="0" aria-label="b28">
+                    <polygon points="2189,1304 2187,1446 2517,1449 2519,1306" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="2353" y="1376" class="bldg-label" font-size="9">b28</text>
+                    <image href="/png/035-28.png" x="2313" y="1326" width="80" height="80"
+                        class="building-icon" />
+
+                </g>
+                <!-- ===== GUDANG & WORKSHOP ===== -->
+                <g data-building-id="b29" class="building-polygon" role="button" tabindex="0" aria-label="b29">
+                    <polygon points="1154,1123 1354,1125 1352,1240 1148,1240" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1252" y="1182" class="bldg-label" font-size="9">b29</text>
+                    <image href="/png/036-29.png" x="1200" y="1142" width="80" height="80"
+                        class="building-icon" />
+                </g>
+                <!-- ===== GAS STATION ===== -->
+                <g data-building-id="b30" class="building-polygon" role="button" tabindex="0" aria-label="b30">
+                    <polygon points="1359,1286 1359,1407 1544,1410 1542,1286" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1451" y="1347" class="bldg-label" font-size="9">b30</text>
+                    <image href="/png/037-30.png" x="1411" y="1310" width="80" height="80"
+                        class="building-icon" />
+
+                </g>
+                <!-- ===== STATION GAS COMPRESSOR ===== -->
+                <g data-building-id="b31" class="building-polygon" role="button" tabindex="0" aria-label="b31">
+                    <polygon points="1354,1264 1354,1413 1164,1408 1168,1263" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1260" y="1337" class="bldg-label" font-size="9">b31</text>
+                    <image href="/png/038-31.png" x="1220" y="1287" width="70" height="70"
+                        class="building-icon" />
+                </g>
+                <!-- ===== AREA GASENA ===== -->
+                <g data-building-id="b32" class="building-polygon" role="button" tabindex="0" aria-label="b32">
+                    <polygon points="934,1344 1111,1346 1111,1427 934,1422" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1023" y="1385" class="bldg-label" font-size="9">b32</text>
+                    <image href="/png/039-32.png" x="983" y="1355" width="65" height="65" class="building-icon" />
+                </g>
+                <!-- ===== AREA TITIK PEMBUANGAN (OUTFALL) ===== -->
+                <g data-building-id="b33" class="building-polygon" role="button" tabindex="0" aria-label="b33">
+                    <polygon points="1634,1314 1677,1318 1677,1399 1636,1398" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1656" y="1357" class="bldg-label" font-size="9">b33</text>
+                    <image href="/png/040-33.png" x="1616" y="1307" width="60" height="60"
+                        class="building-icon" />
+                </g>
+                <!-- ===== GEDUNG ENJINERING ===== -->
+                <g data-building-id="b34" class="building-polygon" role="button" tabindex="0" aria-label="b34">
+                    <polygon points="687,1364 852,1366 852,1462 691,1462" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="771" y="1414" class="bldg-label" font-size="9">b34</text>
+                    <image href="/png/041-34.png" x="731" y="1379" width="80" height="80" class="building-icon" />
+                </g>
+                <!-- ===== GEDUNG K3 ===== -->
+                <g data-building-id="b35" class="building-polygon" role="button" tabindex="0" aria-label="b35">
+                    <polygon points="856,1423 907,1421 905,1462 859,1462" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="882" y="1442" class="bldg-label" font-size="9">b35</text>
+                
+    <image href="/png/042-35.png" x="0" y="0" width="150" height="150" class="building-icon" />
+</g>
+                <!-- ===== AREA OLAHRAGA ===== -->
+                <g data-building-id="b36" class="building-polygon" role="button" tabindex="0" aria-label="b36">
+                    <polygon points="604,1344 652,1346 648,1463 602,1461" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="627" y="1404" class="bldg-label" font-size="9">b36</text>
+                    <image href="/png/043-36.png" x="604" y="1374" width="50" height="50" class="building-icon" />
+                </g>
+                <!-- ===== GEDUNG PARKIR ===== -->
+                <g data-building-id="b37" class="building-polygon" role="button" tabindex="0" aria-label="b37">
+                    <polygon points="496,1353 496,1417 581,1420 581,1353" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="539" y="1386" class="bldg-label" font-size="9">b37</text>
+                    <image href="/png/044-37.png" x="514" y="1356" width="60" height="60"
+                        class="building-icon" />
+                </g>
+                <!-- ===== AREA FIRE WATER TANK ===== -->
+                <g data-building-id="b38" class="building-polygon" role="button" tabindex="0" aria-label="b38">
+                    <polygon points="647,369 647,369 647,489 829,496 831,373" rx="3" fill="#6b8ba8" stroke="#2d3748"
+                        stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="720" y="419" class="bldg-label" font-size="9">b38</text>
+                    <image href="/png/045-38.png" x="657" y="385" width="60" height="60"
+                        class="building-icon" />
+                    <image href="/png/045-38.png" x="757" y="385" width="60" height="60"
+                        class="building-icon" />
+                </g>
+                <!-- ===== AREA BSM ===== --> 
+                <g data-building-id="b39" class="building-polygon" role="button" tabindex="0" aria-label="b39"> 
+                    <polygon points="691,1023 762,1023 762,1064 691,1062" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" /> 
+                    <text x="727" y="1043" class="bldg-label" font-size="9">b39</text> 
+                    <image href="/png/047-39.png" x="690" y="1010" width="60" height="60"
+                        class="building-icon" />
+                </g> 
+                <!-- ===== LABORATORY ===== --> 
+                <g data-building-id="b40" class="building-polygon" role="button" tabindex="0" aria-label="b40"> 
+                    <polygon points="993,397 946,397 950,483 989,483" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" /> 
+                    <text x="970" y="440" class="bldg-label" font-size="9">b40</text> 
+                    <image href="/png/048-40.png" x="945" y="415" width="55" height="55" class="building-icon" />
+                </g> 
+ 
+                <!-- ===== WATER INJECTION PUMP ===== --> 
+                <g data-building-id="b41" class="building-polygon" role="button" tabindex="0" aria-label="b41"> 
+                    <polygon points="1774,744 1817,744 1817,895 1769,895" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" /> 
+                    <text x="1794" y="820" class="bldg-label" font-size="9">b41</text> 
+                    <image href="/png/049-41.png" x="1764" y="790" width="60" height="60" class="building-icon" />
+                </g>
+                <!-- ===== FUEL OIL UNLOADING PUMP AREA ===== --> 
+                <g data-building-id="b42" class="building-polygon" role="button" tabindex="0" aria-label="b42"> 
+                    <polygon points="1739,1189 1780,1189 1780,1283 1737,1281" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" /> 
+                    <text x="1759" y="1236" class="bldg-label" font-size="9">b42</text> 
+                    <image href="/png/050-42.png" x="1727" y="1200" width="60" height="60" class="building-icon" />
+                </g> 
+                <!-- ===== FUEL OIL RECEIVING TANK ===== --> 
+                <g data-building-id="b43" class="building-polygon" role="button" tabindex="0" aria-label="b43"> 
+                    <polygon points="1808,1184 1861,1184 1863,1250 1806,1250" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" /> 
+                    <text x="1835" y="1217" class="bldg-label" font-size="9">b43</text> 
+                      <image href="/png/051-43.png" x="1805" y="1191" width="60" height="60" class="building-icon" />
+                </g> 
+                <!-- ===== HSD TREATMENT PLANT ===== --> 
+                <g data-building-id="b44" class="building-polygon" role="button" tabindex="0" aria-label="b44"> 
+                    <polygon points="1829,1285 1849,1285 1849,1374 1826,1374" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" /> 
+                    <text x="1838" y="1330" class="bldg-label" font-size="9">b44</text> 
+                    <image href="/png/052-44.png" x="1815" y="1300" width="40" height="40" class="building-icon" />
+                </g> 
+                <!-- ===== FOAM SPARE BOTTLE SPACE ===== --> 
+                <g data-building-id="b45" class="building-polygon" role="button" tabindex="0" aria-label="b45"> 
+                    <polygon points="1833,1403 1877,1405 1877,1435 1833,1431" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" /> 
+                    <text x="1855" y="1419" class="bldg-label" font-size="9">b45</text> 
+                    <image href="/png/053-45.png" x="1840" y="1400" width="30" height="30" class="building-icon" />
+                </g>
+                <!-- ===== OIL SEPARATOR FOR DISTILLATE OIL TANK YARD ===== --> 
+                <g data-building-id="b46" class="building-polygon" role="button" tabindex="0" aria-label="b46"> 
+                    <polygon points="2145,1204 2173,1204 2173,1304 2147,1302" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" /> 
+                    <text x="2160" y="1254" class="bldg-label" font-size="9">b46</text> 
+                    <image href="/png/054-46.png" x="2140" y="1229" width="40" height="40" class="building-icon" />
+                </g> 
+                <!-- ===== DEMIN PLANT ===== -->
+                <g data-building-id="b47" class="building-polygon" role="button" tabindex="0" aria-label="b47">
+                    <polygon points="1001,413 1036,413 1040,484 997,484" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1019" y="449" class="bldg-label" font-size="9">b47</text>
+                    <image href="/png/055-47.png" x="995" y="425" width="45" height="45" class="building-icon" />
+                </g>
+                <!-- ===== SERVICE PUMP ===== -->
+                <g data-building-id="b48" class="building-polygon" role="button" tabindex="0" aria-label="b48">
+                    <polygon points="1052,452 1114,452 1114,487 1052,484" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1083" y="469" class="bldg-label" font-size="9">b48</text>
+                    <image href="/png/056-48.png" x="1060" y="448" width="45" height="45" class="building-icon" />
+                </g>
+                <!-- ===== EDG (EMER DIESEL GEN) ===== -->
+                <g data-building-id="b49" class="building-polygon" role="button" tabindex="0" aria-label="b49">
+                    <polygon points="1048,553 1075,553 1075,588 1052,584" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1063" y="570" class="bldg-label" font-size="9">b49</text>
+                    <image href="/png/058-49.png" x="1045" y="555" width="40" height="40" class="building-icon" />
+                </g>
+                <!-- ===== GT 1 & GT 2 ===== -->
+                <g data-building-id="b50" class="building-polygon" role="button" tabindex="0" aria-label="b50">
+                    <polygon points="1560,809 1556,770 1267,770 1267,1016 1560,1019" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1442" y="877" class="bldg-label" font-size="9">b50</text>
+                    <image href="/png/059-50.png" x="1390" y="840" width="100" height="100" class="building-icon" />
+                </g>
+                <!-- ===== STEAM TURBINE ===== -->
+                <g data-building-id="b51" class="building-polygon" role="button" tabindex="0" aria-label="b51">
+                    <polygon points="1270,705 1497,709 1497,603 1278,603" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1386" y="655" class="bldg-label" font-size="9">b51</text>
+                    <image href="/png/060-51.png" x="1345" y="615" width="80" height="80" class="building-icon" />
+                </g>
+                <!-- ===== ELECTRICAL BUILDING ===== -->
+                <g data-building-id="b52" class="building-polygon" role="button" tabindex="0" aria-label="b52">
+                    <polygon points="1267,691 1267,785 1165,785 1165,691" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1216" y="738" class="bldg-label" font-size="9">b52</text>
+                    <image href="/png/015-52.png" x="1190" y="710" width="55" height="55" class="building-icon" />
+                </g>
+                <!-- ===== RUANG CCR ===== -->
+                <g data-building-id="b53" class="building-polygon" role="button" tabindex="0" aria-label="b53">
+                    <polygon points="1513,709 1517,779 1282,775 1282,705" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1399" y="742" class="bldg-label" font-size="9">b53</text>
+                    <image href="/png/014-53.png" x="1370" y="715" width="60" height="60" class="building-icon" />
+                </g>
+                <!-- ===== AUX BOILER ===== -->
+                <g data-building-id="b54" class="building-polygon" role="button" tabindex="0" aria-label="b54">
+                    <polygon points="1626,642 1677,642 1677,697 1626,693" rx="3" fill="#6b8ba8" stroke="#2d3748" stroke-width="0.8" filter="url(#shadow)" />
+                    <text x="1652" y="669" class="bldg-label" font-size="9">b54</text>
+                    <image href="/png/013-54.png" x="1635" y="650" width="35" height="35" class="building-icon" />
+                </g>
+
+
+
+
+ 
+                
+                
+                <!-- Polygon bangunan untuk denah vektor akan ditambahkan di sini -->
+                <!-- Gunakan mapper.html dengan mode Vektor untuk menggambar koordinat -->
+
+                <!-- Rute jalan untuk denah vektor akan ditambahkan di sini -->
+
+                <!-- ===== JALAN INDUSTRI ===== -->
+                <g class="industrial-routes">
+                    <!-- Rute 1 -->
+                    <polyline class="jalan-industri" points="570,517 875,524 875,676" />
+                    <!-- Rute 2 -->
+                    <polyline class="jalan-industri" points="882,524 973,526 973,487" />
+                    <!-- Rute 3 -->
+                    <polyline class="jalan-industri" points="982,524 1292,531 1294,495" />
+                    <!-- Rute 4 -->
+                    <polyline class="jalan-industri" points="1294,563 1294,531 1540,534 1547,402 1586,243 1579,142" />
+                    <!-- Rute 5 -->
+                    <polyline class="jalan-industri" points="1549,536 1599,536 1599,561" />
+                    <!-- Rute 6 -->
+                    <polyline class="jalan-industri"
+                        points="1618,516 1618,539 1693,543 1714,573 1719,621 1709,908 1693,908" />
+                    <!-- Rute 7 -->
+                    <polyline class="jalan-industri"
+                        points="1707,917 1705,1141 2058,1148 2058,1066 2079,1017 2118,1001 2157,1022 2187,1050 2271,1130" />
+                    <!-- Rute 8 -->
+                    <polyline class="jalan-industri"
+                        points="2063,1146 2150,1153 2180,1174 2180,1430 2166,1451 1152,1426 1129,1382 1138,1095 1138,811 1262,813" />
+                    <!-- Rute 9 -->
+                    <polyline class="jalan-industri" points="1145,529 1138,816" />
+                    <!-- Rute 10 -->
+                    <polyline class="jalan-industri" points="1141,1085 1249,1089 1249,1130" />
+                    <!-- Rute 11 -->
+                    <polyline class="jalan-industri" points="1251,1089 1320,1089 1322,1036" />
+                    <!-- Rute 12 -->
+                    <polyline class="jalan-industri" points="1322,1087 1705,1094" />
+                    <!-- Rute 13 -->
+                    <polyline class="jalan-industri" points="1705,1138 1707,1436" />
+                    <!-- Rute 14 -->
+                    <polyline class="jalan-industri" points="2182,1265 2519,1270 2528,1288 2528,1313 2524,1474" />
+                    <!-- Rute 15 -->
+                    <polyline class="jalan-industri" points="1136,1084 627,1079 620,1318" />
+                </g>
+
+                <!-- ===== DAFTAR BANGUNAN (embedded panel untuk Vektor ~36% scale) ===== -->
+                <foreignObject x="2150" y="60" width="560" height="800" class="daftar-bangunan-fo daftar-bangunan-fo--vektor">
+                    <div xmlns="http://www.w3.org/1999/xhtml" class="daftar-bangunan-wrapper" id="cariCepatWrapperVektor">
+                        <div class="daftar-bangunan-header" id="btnCariCepatVektor">
+                            📋 Daftar Bangunan
+                        </div>
+                        <div class="daftar-bangunan-content">
+                            <ul class="building-list" id="buildingListVektor">
+                                <!-- List bangunan akan dimasukkan lewat JavaScript -->
+                            </ul>
+                        </div>
+                    </div>
+                </foreignObject>
+            </svg>
+        </main>
+    </div>
+
+    <!-- Floating Tooltip -->
+    <div id="tooltip" class="map-tooltip"></div>
+
+    <!-- Popover Card -->
+    <div id="popoverCard" class="popover-card">
+        <button class="popover-close" id="popoverClose" aria-label="Tutup">&times;</button>
+        <img id="popoverImage" src="" alt="Building Image" class="popover-img" style="display: none;">
+        <div class="popover-body">
+            <h3 id="popoverTitle">Nama Bangunan</h3>
+            <p id="popoverDesc">Deskripsi singkat bangunan...</p>
+            <div class="popover-footer">
+                <button id="btnDetail" class="btn-detail">Detail</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detail Modal -->
+    <div id="infoModal" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="modalName">
+        <div class="modal-content modal-content--wide">
+            <button class="close-btn" id="closeModal" aria-label="Tutup modal">&times;</button>
+            <div class="modal-header">
+                <div class="modal-header-top">
+                    <span class="building-number" id="modalNumber">#00</span>
+                    <span class="zona-badge" id="modalZona">A</span>
+                </div>
+                <h2 id="modalName">Nama Bangunan</h2>
+            </div>
+            <div class="modal-body">
+                <!-- 1. Deskripsi -->
+                <section class="modal-section">
+                    <h4 class="modal-section-title">📋 Deskripsi</h4>
+                    <p id="modalDescription">Deskripsi bangunan.</p>
+                </section>
+
+                <!-- 2. Fungsi -->
+                <section class="modal-section" id="modalFungsiSection">
+                    <h4 class="modal-section-title">⚙️ Fungsi Bangunan</h4>
+                    <ul id="modalFungsi" class="fungsi-list"></ul>
+                </section>
+
+                <!-- 3 & 4. Dimensi + Zona -->
+                <div class="modal-meta-row">
+                    <div class="modal-meta-item">
+                        <span class="meta-label">📐 Dimensi</span>
+                        <span class="meta-value" id="modalDimensi">-</span>
+                    </div>
+                    <div class="modal-meta-item">
+                        <span class="meta-label">📍 Zona Area</span>
+                        <span class="meta-value zona-badge" id="modalZonaDetail">-</span>
+                    </div>
+                </div>
+
+                <!-- 5. Galeri Foto -->
+                <section class="modal-gallery" id="modalGallery">
+                    <h4 class="modal-section-title">📸 Foto Bangunan</h4>
+                    <div id="galleryContent">
+                        <!-- Gallery floor sections rendered by JS -->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Overlay -->
+    <div id="lightboxOverlay" class="lightbox-overlay">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Tutup">&times;</button>
+        <img id="lightboxImage" src="" alt="Full size photo">
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
