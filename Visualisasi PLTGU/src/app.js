@@ -909,6 +909,31 @@ const allImagePaths = Object.keys(allImageFiles);
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    // Keep every numbered map marker visually consistent without moving its center point.
+    [
+        ['mapOverlaySatelit', 150],
+        ['mapOverlayVektor', 80]
+    ].forEach(([overlayId, size]) => {
+        const overlay = document.getElementById(overlayId);
+        if (!overlay) return;
+
+        overlay.querySelectorAll('image.building-icon').forEach(icon => {
+            const x = Number(icon.getAttribute('x'));
+            const y = Number(icon.getAttribute('y'));
+            const width = Number(icon.getAttribute('width'));
+            const height = Number(icon.getAttribute('height'));
+
+            if (![x, y, width, height].every(Number.isFinite)) return;
+
+            icon.setAttribute('x', x + (width - size) / 2);
+            icon.setAttribute('y', y + (height - size) / 2);
+            icon.setAttribute('width', size);
+            icon.setAttribute('height', size);
+        });
+
+        overlay.querySelectorAll('.building-polygon').forEach(building => overlay.appendChild(building));
+    });
+
     // ===== DIGITAL CLOCK (WIB — Cilegon, Banten) =====
     const clockTimeEl = document.getElementById('clockTime');
     if (clockTimeEl) {
