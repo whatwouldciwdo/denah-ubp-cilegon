@@ -106,14 +106,16 @@ export const buildingData = {
             "Menjamin keandalan pendinginan berkesinambungan"
         ]
     },
-        "b10": {
+    "b10": {
         number: "b10",
-        name: "NOT USED",
-        zona: "-",
+        name: "Gas Metering Station PHE",
+        zona: "B",
         dimensi: "-",
-        shortDesc: "Slot nomor 10 (NOT USED) pada daftar resmi peralatan.",
-        description: "Slot bangunan nomor 10 bertuliskan NOT USED pada daftar resmi EQUIPMENT / BUILDING LIST.",
-        fungsi: ["Tidak digunakan dalam daftar resmi peralatan pembangkit"]
+        shortDesc: "Fasilitas pengukuran dan pemantauan aliran gas yang dipasok dari PHE sebelum digunakan sebagai bahan bakar pembangkit.",
+        description: "Fasilitas pengukuran dan pemantauan aliran gas yang dipasok dari PHE sebelum digunakan sebagai bahan bakar pembangkit. Sistem ini digunakan untuk memantau parameter penting seperti tekanan, temperatur, laju alir, dan jumlah gas yang disalurkan ke PLTGU.",
+        fungsi: [
+            "Mengukur dan memantau tekanan, temperatur, laju alir, serta jumlah pasokan gas dari PHE yang masuk ke PLTGU."
+        ]
     },
     "b11": {
         number: "b11",
