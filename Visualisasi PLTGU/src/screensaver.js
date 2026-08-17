@@ -1,46 +1,28 @@
 // ============================================================
 // screensaver.js — Fitur Video Screensaver untuk Kiosk
 // ============================================================
-// Cara kerja:
-//   - Jika tidak ada aktivitas (touch/klik/mouse/keyboard) selama
-//     IDLE_TIMEOUT detik, overlay video muncul dan video diputar.
-//   - Saat ada sentuhan/klik di overlay, video dihentikan dan
-//     pengguna kembali ke peta interaktif.
-//
-// KONFIGURASI PATH VIDEO:
-//   Karena file video (~650 MB) disimpan LOKAL di masing-masing
-//   kiosk (bukan di server/GitHub), path VIDEO_SOURCES harus
-//   disesuaikan dengan lokasi file di komputer kiosk tersebut.
-//
-//   Contoh path:
-//     Windows:  'file:///C:/Videos/COMPRO PLTGU 2025 FINAL.mp4'
-//     Relatif:  'videos/COMPRO PLTGU 2025 FINAL.mp4'  (jika ada di public/videos/)
-// ============================================================
 
 // ---- KONFIGURASI ----
 const IDLE_TIMEOUT_MS = 30 * 1000; // 30 detik tanpa aktivitas
 
-// Path video — ubah sesuai lokasi file di kiosk
-// Gunakan path relatif jika file ada di folder public/videos/
-// Gunakan path absolut (file:///) jika file ada di tempat lain di Windows
 const VIDEO_SOURCES = [
     'videos/COMPRO PLTGU 2025 FINAL.mp4',
-    // Tambahkan fallback path jika perlu:
-    // 'file:///C:/Videos/COMPRO PLTGU 2025 FINAL.mp4',
 ];
 
 // ---- STATE ----
 let idleTimer = null;
 let screensaverActive = false;
+let isAudioMuted = true; // Default muted agar autoplay selalu diizinkan browser
 
 // ---- DOM ELEMENTS ----
 let screensaverOverlay = null;
 let screensaverVideo = null;
 let screensaverHint = null;
+let screensaverAudioBtn = null;
+let screensaverVolumeSlider = null;
 
 // ---- INIT ----
 function initScreensaver() {
-    // Buat overlay screensaver
     screensaverOverlay = document.createElement('div');
     screensaverOverlay.id = 'screensaverOverlay';
     screensaverOverlay.setAttribute('aria-hidden', 'true');
@@ -53,10 +35,24 @@ function initScreensaver() {
             ${VIDEO_SOURCES.map(src => `<source src="${src}" type="video/mp4">`).join('\n            ')}
             Browser tidak mendukung video.
         </video>
+
+        <!-- Control Bar Suara (Mute/Unmute & Volume) -->
+        <div id="screensaverAudioControl">
+            <button id="screensaverAudioBtn" class="audio-btn muted" title="Aktifkan / Matikan Suara" aria-label="Pengontrol Suara">
+                <span class="audio-icon sound-off">🔇</span>
+                <span class="audio-icon sound-on" style="display:none;">🔊</span>
+                <span class="audio-label">Suara: Muted</span>
+            </button>
+            <div class="volume-slider-wrapper">
+                <input type="range" id="screensaverVolumeSlider" min="0" max="1" step="0.05" value="1" title="Pengatur Volume">
+            </div>
+        </div>
+
         <div id="screensaverHint">
             <span class="hint-icon">👆</span>
             <span class="hint-text">Sentuh layar untuk kembali ke peta</span>
         </div>
+
         <div id="screensaverLogo">
             <img src="logo/Gema Logo.jpeg" alt="GEMA Logo" onerror="this.style.display='none'">
         </div>
@@ -64,9 +60,10 @@ function initScreensaver() {
 
     document.body.appendChild(screensaverOverlay);
 
-    // Ambil referensi elemen video setelah ditambahkan ke DOM
     screensaverVideo = document.getElementById('screensaverVideo');
     screensaverHint = document.getElementById('screensaverHint');
+    screensaverAudioBtn = document.getElementById('screensaverAudioBtn');
+    screensaverVolumeSlider = document.getElementById('screensaverVolumeSlider');
 
     // Event: saat video selesai → putar ulang (loop)
     screensaverVideo.addEventListener('ended', () => {
@@ -74,7 +71,17 @@ function initScreensaver() {
         screensaverVideo.play().catch(() => {});
     });
 
-    // Event: klik/sentuh di overlay screensaver → kembali ke peta
+    // Event Mute/Unmute Toggle Button
+    const audioControlContainer = document.getElementById('screensaverAudioControl');
+    
+    // Stop propagation agar klik tombol suara TIDAK menutup screensaver
+    audioControlContainer.addEventListener('click', (e) => e.stopPropagation());
+    audioControlContainer.addEventListener('touchstart', (e) => e.stopPropagation(), { passive: false });
+
+    screensaverAudioBtn.addEventListener('click', toggleAudio);
+    screensaverVolumeSlider.addEventListener('input', handleVolumeChange);
+
+    // Event: klik/sentuh di area luar kontrol → kembali ke peta
     screensaverOverlay.addEventListener('click', deactivateScreensaver);
     screensaverOverlay.addEventListener('touchstart', deactivateScreensaver, { passive: true });
 
@@ -83,9 +90,55 @@ function initScreensaver() {
     registerActivityListeners();
 }
 
+// ---- KONTROL SUARA ----
+function toggleAudio(e) {
+    if (e) e.stopPropagation();
+
+    isAudioMuted = !isAudioMuted;
+    screensaverVideo.muted = isAudioMuted;
+
+    updateAudioUI();
+}
+
+function handleVolumeChange(e) {
+    if (e) e.stopPropagation();
+    const val = parseFloat(screensaverVolumeSlider.value);
+    screensaverVideo.volume = val;
+
+    if (val === 0) {
+        screensaverVideo.muted = true;
+        isAudioMuted = true;
+    } else {
+        screensaverVideo.muted = false;
+        isAudioMuted = false;
+    }
+
+    updateAudioUI();
+}
+
+function updateAudioUI() {
+    const soundOffIcon = screensaverAudioBtn.querySelector('.sound-off');
+    const soundOnIcon = screensaverAudioBtn.querySelector('.sound-on');
+    const audioLabel = screensaverAudioBtn.querySelector('.audio-label');
+
+    if (isAudioMuted || screensaverVideo.volume === 0) {
+        soundOffIcon.style.display = 'inline-block';
+        soundOnIcon.style.display = 'none';
+        audioLabel.textContent = 'Suara: Matikan';
+        screensaverAudioBtn.classList.add('muted');
+        screensaverAudioBtn.classList.remove('unmuted');
+    } else {
+        soundOffIcon.style.display = 'none';
+        soundOnIcon.style.display = 'inline-block';
+        audioLabel.textContent = `Suara: ${Math.round(screensaverVideo.volume * 100)}%`;
+        screensaverAudioBtn.classList.remove('muted');
+        screensaverAudioBtn.classList.add('unmuted');
+    }
+}
+
 // ---- TIMER ----
 function resetIdleTimer() {
-    if (screensaverActive) return; // Jangan reset saat screensaver aktif
+    if (screensaverActive) return;
     clearTimeout(idleTimer);
     idleTimer = setTimeout(activateScreensaver, IDLE_TIMEOUT_MS);
 }
@@ -100,30 +153,31 @@ function activateScreensaver() {
 
     // Mulai dari awal dan putar
     screensaverVideo.currentTime = 0;
+    screensaverVideo.muted = isAudioMuted; // Sesuaikan dengan state terkahir
+
     screensaverVideo.play().catch((err) => {
-        console.warn('[Screensaver] Gagal memutar video:', err.message);
-        // Tampilkan pesan error ringan jika video tidak tersedia
-        showVideoError();
+        console.warn('[Screensaver] Autoplay terblokir atau gagal:', err.message);
+        // Fallback ke muted jika unmuted autoplay diblokir browser
+        screensaverVideo.muted = true;
+        isAudioMuted = true;
+        updateAudioUI();
+        screensaverVideo.play().catch(() => showVideoError());
     });
 
     // Tampilkan hint setelah 3 detik
     setTimeout(() => {
         if (screensaverHint) screensaverHint.classList.add('visible');
     }, 3000);
-
-    console.log('[Screensaver] Aktif — menampilkan video kompro.');
 }
 
 // ---- DEAKTIVASI SCREENSAVER ----
 function deactivateScreensaver(event) {
     if (!screensaverActive) return;
 
-    // Cegah event menyebar ke peta (agar tidak memicu klik bangunan)
     if (event) event.stopPropagation();
 
     screensaverActive = false;
 
-    // Animasi fade-out
     screensaverOverlay.classList.add('closing');
     screensaverHint.classList.remove('visible');
 
@@ -132,11 +186,8 @@ function deactivateScreensaver(event) {
         screensaverOverlay.setAttribute('aria-hidden', 'true');
         screensaverVideo.pause();
 
-        // Reset idle timer
         resetIdleTimer();
-    }, 600); // Durasi sama dengan transisi CSS
-
-    console.log('[Screensaver] Nonaktif — kembali ke peta.');
+    }, 600);
 }
 
 // ---- DETEKSI AKTIVITAS USER ----
@@ -170,8 +221,6 @@ function showVideoError() {
     screensaverOverlay.appendChild(errorMsg);
 }
 
-// ---- EKSPOR & AUTO-INIT ----
-// Inisialisasi setelah DOM siap
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initScreensaver);
 } else {
