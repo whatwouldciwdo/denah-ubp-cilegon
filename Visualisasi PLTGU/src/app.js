@@ -257,14 +257,16 @@ export const buildingData = {
             "Mendukung kegiatan administrasi, koordinasi, perencanaan, dan pengelolaan operasional pembangkit."
         ]
     },
-        "b23": {
+    "b23": {
         number: "b23",
-        name: "NOT USED",
-        zona: "-",
+        name: "Gas Metering Station PGN",
+        zona: "B",
         dimensi: "-",
-        shortDesc: "Slot nomor 23 (NOT USED) pada daftar resmi peralatan.",
-        description: "Slot bangunan nomor 23 bertuliskan NOT USED pada daftar resmi EQUIPMENT / BUILDING LIST.",
-        fungsi: ["Tidak digunakan dalam daftar resmi peralatan pembangkit"]
+        shortDesc: "Fasilitas pengukuran dan pemantauan aliran gas yang dipasok dari PGN sebelum masuk ke sistem bahan bakar pembangkit.",
+        description: "Fasilitas pengukuran dan pemantauan aliran gas yang dipasok dari PGN sebelum masuk ke sistem bahan bakar pembangkit. Peralatan ini berfungsi memastikan kuantitas dan kondisi gas yang diterima sesuai dengan kebutuhan operasi serta mendukung pencatatan konsumsi gas.",
+        fungsi: [
+            "Mengukur dan memantau parameter serta kuantitas pasokan gas dari PGN sebelum digunakan sebagai bahan bakar pembangkit."
+        ]
     },
     "b24": {
         number: "b24",
@@ -797,28 +799,6 @@ export const buildingData = {
         description: "Fasilitas pelayanan kesehatan untuk pemeriksaan awal, pertolongan pertama, dan penanganan medis dasar bagi pekerja maupun pengunjung.",
         fungsi: [
             "Memberikan pelayanan kesehatan dasar, pemeriksaan, pertolongan pertama, dan penanganan medis awal."
-        ]
-    },
-    "b_phe": {
-        number: "PHE",
-        name: "Gas Metering Station PHE",
-        zona: "B",
-        dimensi: "-",
-        shortDesc: "Fasilitas pengukuran dan pemantauan aliran gas yang dipasok dari PHE sebelum digunakan sebagai bahan bakar pembangkit.",
-        description: "Fasilitas pengukuran dan pemantauan aliran gas yang dipasok dari PHE sebelum digunakan sebagai bahan bakar pembangkit. Sistem ini digunakan untuk memantau parameter penting seperti tekanan, temperatur, laju alir, dan jumlah gas yang disalurkan ke PLTGU.",
-        fungsi: [
-            "Mengukur dan memantau tekanan, temperatur, laju alir, serta jumlah pasokan gas dari PHE yang masuk ke PLTGU."
-        ]
-    },
-    "b_pgn": {
-        number: "PGN",
-        name: "Gas Metering Station PGN",
-        zona: "B",
-        dimensi: "-",
-        shortDesc: "Fasilitas pengukuran dan pemantauan aliran gas yang dipasok dari PGN sebelum masuk ke sistem bahan bakar pembangkit.",
-        description: "Fasilitas pengukuran dan pemantauan aliran gas yang dipasok dari PGN sebelum masuk ke sistem bahan bakar pembangkit. Peralatan ini berfungsi memastikan kuantitas dan kondisi gas yang diterima sesuai dengan kebutuhan operasi serta mendukung pencatatan konsumsi gas.",
-        fungsi: [
-            "Mengukur dan memantau parameter serta kuantitas pasokan gas dari PGN sebelum digunakan sebagai bahan bakar pembangkit."
         ]
     }
 };
