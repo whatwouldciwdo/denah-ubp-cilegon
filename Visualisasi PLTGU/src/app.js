@@ -6,12 +6,10 @@ export const buildingData = {
         name: "Gas Turbine",
         zona: "A",
         dimensi: "± 2.450 m²",
-        shortDesc: "Unit turbin gas utama (GT 1 & GT 2) yang membakar bahan bakar untuk menghasilkan daya listrik dan gas buang panas.",
-        description: "Gas Turbine adalah komponen utama pembangkit yang mengonversi energi kimia bahan bakar (gas alam atau High-Speed Diesel) menjadi energi mekanik melalui proses pembakaran. Energi putar ini menggerakkan generator untuk menghasilkan listrik. Gas buang bersuhu tinggi (±540°C) dari turbin gas kemudian dialirkan ke Heat Recovery Steam Generator (HRSG) untuk menghasilkan uap.",
+        shortDesc: "Mitsubishi M701F Gas Turbine — Peralatan utama pembangkit yang mengubah energi pembakaran menjadi energi mekanik untuk menggerakkan generator.",
+        description: "Mitsubishi M701F Gas Turbine\nPeralatan utama pembangkit yang mengubah energi pembakaran menjadi energi mekanik untuk menggerakkan generator. Gas buangnya dimanfaatkan oleh HRSG sebagai sumber panas pada siklus kombinasi.",
         fungsi: [
-            "Mengonversi bahan bakar gas alam/HSD menjadi energi putar turbin",
-            "Menggerakkan generator utama untuk membangkitkan listrik",
-            "Menyuplai gas buang bersuhu tinggi ke HRSG"
+            "Mengubah energi hasil pembakaran bahan bakar menjadi energi mekanik untuk memutar generator dan menghasilkan listrik."
         ]
     },
     "b2": {
@@ -19,12 +17,10 @@ export const buildingData = {
         name: "Steam Turbine Building & Common Building",
         zona: "A",
         dimensi: "± 2.100 m²",
-        shortDesc: "Gedung turbin uap yang memanfaatkan uap panas dari HRSG untuk membangkitkan listrik tambahan (sistem siklus kombinasi).",
-        description: "Steam Turbine Building & Common Building menampung turbin uap, generator turbin uap, serta peralatan kontrol umum. Dalam siklus kombinasi (combined cycle), uap bertekanan tinggi yang dihasilkan oleh HRSG diekspansikan melalui sudu-sudu turbin uap untuk memutar generator tambahan. Hal ini meningkatkan efisiensi total pembangkitan tanpa menambah konsumsi bahan bakar.",
+        shortDesc: "Steam Turbine TC2F-35.4\" — Turbin uap yang memanfaatkan uap hasil HRSG untuk menghasilkan putaran mekanik pada generator.",
+        description: "Steam Turbine TC2F-35.4\"\nTurbin uap yang memanfaatkan uap hasil HRSG untuk menghasilkan putaran mekanik pada generator, sehingga meningkatkan efisiensi pembangkit pada sistem combined cycle.",
         fungsi: [
-            "Mengonversi uap bertekanan tinggi dari HRSG menjadi energi mekanik putar",
-            "Menggerakkan generator turbin uap untuk pembangkitan listrik siklus kombinasi",
-            "Pusat kontrol peralatan pembantu (common building)"
+            "Mengubah energi uap bertekanan dan bertemperatur tinggi dari HRSG menjadi energi mekanik untuk menggerakkan generator."
         ]
     },
     "b3": {
@@ -32,38 +28,32 @@ export const buildingData = {
         name: "Heat Recovery Steam Generator",
         zona: "A",
         dimensi: "± 3.200 m²",
-        shortDesc: "Ketel uap daur ulang panas yang memanfaatkan gas buang panas dari turbin gas untuk menghasilkan uap.",
-        description: "Heat Recovery Steam Generator (HRSG) adalah penukar panas besar yang menyerap energi kalor dari gas buang turbin gas dan memanaskan air demin untuk menghasilkan uap bertekanan tinggi (HP), menengah (IP), dan rendah (LP). Uap ini kemudian dialirkan ke turbin uap.",
+        shortDesc: "Heat Recovery Steam Generator (HRSG) — Boiler pemulihan panas tipe unfired yang memanfaatkan panas gas buang Gas Turbine untuk menghasilkan uap.",
+        description: "Heat Recovery Steam Generator (HRSG)\nBoiler pemulihan panas tipe unfired yang memanfaatkan panas gas buang Gas Turbine untuk menghasilkan uap bertekanan HP, IP/RH, dan LP. HRSG menggunakan sistem natural circulation dengan konfigurasi vertical flow sebagai bagian utama dari proses combined cycle.",
         fungsi: [
-            "Menyerap energi panas dari gas buang turbin gas",
-            "Memproduksi uap bertekanan tinggi, menengah, dan rendah",
-            "Meningkatkan efisiensi termal total PLTGU Cilegon"
+            "Memanfaatkan panas gas buang Gas Turbine untuk menghasilkan uap yang digunakan oleh Steam Turbine."
         ]
     },
     "b4": {
         number: "b4",
-        name: "Transformer Bay",
+        name: "Transformer",
         zona: "A",
         dimensi: "± 1.200 m²",
-        shortDesc: "Area transformator utama yang menaikkan tegangan listrik dari generator sebelum disalurkan ke jaringan switchyard.",
-        description: "Transformer Bay menampung transformator utama (Main Step-Up Transformer / Generator Step-Up Transformer) dan transformator pemakaian sendiri (Unit Auxiliary Transformer). Peralatan ini berfungsi menaikkan tegangan output generator (biasanya 11kV - 15kV) menjadi tegangan tinggi 150kV.",
+        shortDesc: "Transformer – CG PAUWELS / UNINDO — Transformator tenaga yang berfungsi menyesuaikan level tegangan dari sistem pembangkitan ke jaringan kelistrikan.",
+        description: "Transformer – CG PAUWELS / UNINDO\nTransformator tenaga yang berfungsi menyesuaikan level tegangan dari sistem pembangkitan ke jaringan kelistrikan. Peralatan ini berperan penting dalam menjaga keandalan, keamanan, dan efisiensi penyaluran daya listrik.",
         fungsi: [
-            "Menaikkan tegangan listrik output generator ke tegangan transmisi 150kV",
-            "Menyuplai listrik internal pembangkit melalui Unit Auxiliary Transformer",
-            "Dilengkapi sistem pendingin oli dan proteksi kebakaran otomatis"
+            "Menaikkan atau menurunkan tegangan listrik agar sesuai dengan kebutuhan penyaluran dan distribusi daya."
         ]
     },
     "b5": {
         number: "b5",
-        name: "TCA Cooler",
+        name: "Rest Area",
         zona: "A",
         dimensi: "± 450 m²",
-        shortDesc: "Fasilitas pendingin udara tekan (Turbine Cooling Air Cooler) untuk mendinginkan sudu-sudu turbin gas.",
-        description: "TCA (Turbine Cooling Air) Cooler mendinginkan udara ekstraksi dari kompresor sebelum disuntikkan kembali untuk mendinginkan sudu-sudu turbin gas bagian panas (combustor dan sudu tingkat awal), mencegah panas berlebih pada komponen turbin.",
+        shortDesc: "Area yang disediakan bagi pekerja untuk beristirahat sementara selama kegiatan operasional maupun pemeliharaan.",
+        description: "Area yang disediakan bagi pekerja untuk beristirahat sementara selama kegiatan operasional maupun pemeliharaan.",
         fungsi: [
-            "Mendinginkan udara pendingin sudu-sudu turbin gas",
-            "Mencegah kerusakan termal pada komponen panas turbin",
-            "Menjaga efisiensi operasi turbin gas"
+            "Menyediakan tempat istirahat bagi pekerja selama kegiatan operasional maupun pemeliharaan."
         ]
     },
     "b6": {
@@ -94,15 +84,13 @@ export const buildingData = {
     },
     "b8": {
         number: "b8",
-        name: "Fire Station",
+        name: "Fire Truck Station",
         zona: "D",
         dimensi: "± 300 m²",
-        shortDesc: "Markas armada dan personel pemadam kebakaran siap siaga 24 jam.",
-        description: "Fire Station menampung truk pemadam kebakaran, armada rescue, tangki foam, dan peralatan K3/Fire Fighting lengkap untuk penanganan darurat kebakaran di seluruh area industri PLTGU Cilegon.",
+        shortDesc: "Area siaga kendaraan pemadam kebakaran yang digunakan untuk mendukung respons cepat terhadap kondisi kebakaran atau keadaan darurat di area pembangkit.",
+        description: "Area siaga kendaraan pemadam kebakaran yang digunakan untuk mendukung respons cepat terhadap kondisi kebakaran atau keadaan darurat di area pembangkit.",
         fungsi: [
-            "Penyimpanan armada truk pemadam kebakaran dan alat K3",
-            "Siaga 24/7 untuk penanggulangan darurat kebakaran",
-            "Pusat koordinasi tim tanggap darurat (Emergency Response Team)"
+            "Menjadi lokasi siaga kendaraan pemadam untuk mendukung penanganan kebakaran dan keadaan darurat."
         ]
     },
     "b9": {
@@ -145,12 +133,10 @@ export const buildingData = {
         name: "Condensate Water Tank",
         zona: "A",
         dimensi: "± 2.900 m²",
-        shortDesc: "Tangki besar penampung air kondensat hasil pendinginan uap setelah melewati steam turbine.",
-        description: "Condensate Water Tank menampung air hasil kondensasi uap dari kondenser steam turbin. Air murni ini disirkulasikan kembali ke HRSG melalui pompa kondensat.",
+        shortDesc: "Tangki penyimpanan air kondensat yang digunakan sebagai bagian dari siklus air-uap dan sebagai suplai air menuju sistem terkait.",
+        description: "Tangki penyimpanan air kondensat yang digunakan sebagai bagian dari siklus air-uap dan sebagai suplai air menuju sistem terkait.",
         fungsi: [
-            "Menampung air kondensat murni dari kondenser turbin uap",
-            "Menyirkulasikan kembali air pengisi ke deaerator dan HRSG",
-            "Menjaga efisiensi siklus air-uap tertutup"
+            "Menampung air kondensat sebagai cadangan dan suplai dalam sistem siklus air-uap pembangkit."
         ]
     },
     "b13": {
@@ -168,24 +154,22 @@ export const buildingData = {
     },
     "b14": {
         number: "b14",
-        name: "150 kV AIS Area",
+        name: "Gardu Induk PLTGU Cilegon",
         zona: "A",
         dimensi: "± 3.500 m²",
-        shortDesc: "Area switchyard Gardu Induk 150kV berisolasi udara (Air Insulated Switchyard).",
-        description: "150 kV AIS Area menampung perlengkapan sakelar gardu induk berisolasi udara seperti busbar, pemutus tenaga (circuit breaker), pemisah (disconnector), dan trafo ukur untuk menyalurkan energi ke jaringan PLN.",
+        shortDesc: "Fasilitas kelistrikan yang berfungsi menerima, mengatur, melindungi, dan menyalurkan daya listrik dari pembangkit menuju jaringan transmisi.",
+        description: "Fasilitas kelistrikan yang berfungsi menerima, mengatur, melindungi, dan menyalurkan daya listrik dari pembangkit menuju jaringan transmisi.",
         fungsi: [
-            "Titik penghubung transmisi daya listrik 150kV ke jaringan PLN",
-            "Pengoperasian pemutus tenaga (breaker) dan sakelar pemisah",
-            "Proteksi dan pemantauan sistem kelistrikan tegangan tinggi"
+            "Menerima dan menyalurkan daya listrik dari pembangkit ke jaringan transmisi serta menyediakan fungsi switching dan proteksi."
         ]
     },
     "b15": {
         number: "b15",
-        name: "Oil Separator For Distillate Oil Tank Yard",
+        name: "Oil Separator",
         zona: "B",
         dimensi: "± 300 m²",
         shortDesc: "Fasilitas pemisah minyak-air di bunding tangki bahan bakar HSD.",
-        description: "Oil Separator For Distillate Oil Tank Yard memisahkan minyak dari air hujan dan drainase di sekitar area tangki HSD agar air buangan bebas pencemaran sebelum ke WWTP.",
+        description: "Oil Separator memisahkan minyak dari air hujan dan drainase di sekitar area tangki HSD agar air buangan bebas pencemaran sebelum ke WWTP.",
         fungsi: [
             "Separasi minyak dari air drainase di yard tangki HSD",
             "Mencegah kontaminasi minyak ke lingkungan sekitar",
@@ -194,54 +178,46 @@ export const buildingData = {
     },
     "b16": {
         number: "b16",
-        name: "Water Injection Pump",
+        name: "Closed Cooling Water Pump GT",
         zona: "B",
         dimensi: "± 200 m²",
-        shortDesc: "Stasiun pompa injeksi air demin bertekanan tinggi ke combustor turbin gas untuk penekanan emisi NOx.",
-        description: "Water Injection Pump menginjeksikan air demineralisasi presisi tinggi ke ruang bakar turbin gas saat beroperasi dengan bahan bakar cair guna menekan emisi NOx.",
+        shortDesc: "Pompa yang mensirkulasikan air pendingin pada sistem closed cooling water untuk mendinginkan peralatan pendukung Gas Turbine.",
+        description: "Pompa yang mensirkulasikan air pendingin pada sistem closed cooling water untuk mendinginkan peralatan pendukung Gas Turbine.",
         fungsi: [
-            "Injeksi air demin ke combustor turbin gas penekan emisi NOx",
-            "Meningkatkan daya output turbin gas (power augmentation)",
-            "Menjaga ambang batas emisi sesuai Baku Mutu Lingkungan"
+            "Mensirkulasikan air pendingin pada sistem closed cooling untuk mendinginkan peralatan pendukung Gas Turbine."
         ]
     },
     "b17": {
         number: "b17",
-        name: "Warehouse and Workshop",
+        name: "Warehouse & Workshop",
         zona: "B",
         dimensi: "± 648 m²",
-        shortDesc: "Pusat penyimpanan suku cadang dan bengkel pemeliharaan teknis mekanik/listrik.",
-        description: "Warehouse and Workshop menampung ribuan komponen spare parts dan dilengkapi fasilitas perbaikan mekanik, pengelasan, bubut, dan pengujian peralatan pembangkit.",
+        shortDesc: "Fasilitas penyimpanan material, suku cadang, dan peralatan sekaligus area untuk pekerjaan perbaikan dan pemeliharaan.",
+        description: "Fasilitas penyimpanan material, suku cadang, dan peralatan sekaligus area untuk pekerjaan perbaikan dan pemeliharaan.",
         fungsi: [
-            "Penyimpanan dan manajemen inventori suku cadang pembangkit",
-            "Fasilitas workshop bengkel pemeliharaan dan perbaikan komponen",
-            "Pengelasan dan pengujian kelaikan alat in-house"
+            "Menyimpan material dan suku cadang serta menjadi tempat pelaksanaan pekerjaan perbaikan dan pemeliharaan."
         ]
     },
     "b18": {
         number: "b18",
-        name: "CW Pump",
+        name: "Closed Cooling Fan",
         zona: "C",
         dimensi: "± 800 m²",
-        shortDesc: "Stasiun pompa air pendingin utama (Circulating Water Pump) dari intake menuju kondenser.",
-        description: "CW Pump (Circulating Water Pump) memompa air laut debit sangat besar dari Water Intake menuju kondenser steam turbin untuk mengondensasikan uap kembali menjadi air.",
+        shortDesc: "Kipas pendingin yang membantu membuang panas dari sistem closed cooling water ke lingkungan agar temperatur fluida tetap sesuai batas operasi.",
+        description: "Kipas pendingin yang membantu membuang panas dari sistem closed cooling water ke lingkungan agar temperatur fluida tetap sesuai batas operasi.",
         fungsi: [
-            "Memompa air laut sebagai pendingin utama kondenser turbin uap",
-            "Menyediakan debit pendinginan kontinu untuk siklus uap",
-            "Menjaga vakum kondenser pada titik operasi optimal"
+            "Melepaskan panas dari closed cooling water ke udara untuk menjaga temperatur sistem pendingin."
         ]
     },
     "b19": {
         number: "b19",
-        name: "Electrochlorination Building",
+        name: "Chlorination Plant",
         zona: "C",
         dimensi: "± 1.840 m²",
-        shortDesc: "Gedung pembuat dan penginjeksi klorin (NaOCl) dari air laut untuk mencegah bio-fouling.",
-        description: "Electrochlorination Building memproduksi natrium hipoklorit dari elektrolisis air laut untuk diinjeksikan ke sistem saluran air pendingin guna mencegah pertumbuhan kerang dan biota laut.",
+        shortDesc: "Fasilitas injeksi bahan kimia berbasis klorin untuk mengendalikan pertumbuhan organisme dan biofouling pada sistem air.",
+        description: "Fasilitas injeksi bahan kimia berbasis klorin untuk mengendalikan pertumbuhan organisme dan biofouling pada sistem air.",
         fungsi: [
-            "Produksi natrium hipoklorit (NaOCl) secara elektrolisis dari air laut",
-            "Injeksi klorin pencegah pembentukan bio-fouling pipa pendingin",
-            "Perlindungan kinerja perpindahan panas kondenser"
+            "Menginjeksikan klorin untuk mengendalikan organisme laut, lumut, dan biofouling pada sistem air pendingin."
         ]
     },
     "b20": {
@@ -259,15 +235,13 @@ export const buildingData = {
     },
     "b21": {
         number: "b21",
-        name: "Aux. Boiler",
+        name: "Auxiliary Boiler",
         zona: "A",
         dimensi: "± 300 m²",
-        shortDesc: "Ketel uap pembantu yang menyediakan uap awal untuk proses start-up pembangkit.",
-        description: "Auxiliary Boiler menghasilkan uap pembantu (auxiliary steam) untuk pemanasan awal pipa uap, gland seal steam turbin, dan deaerasi saat unit akan di-start dari kondisi dingin.",
+        shortDesc: "Boiler bantu yang menghasilkan uap untuk kebutuhan start-up, pemanasan, atau kebutuhan utilitas ketika suplai uap utama belum tersedia.",
+        description: "Boiler bantu yang menghasilkan uap untuk kebutuhan start-up, pemanasan, atau kebutuhan utilitas ketika suplai uap utama belum tersedia.",
         fungsi: [
-            "Penyedia uap bantu saat proses start-up unit dari kondisi dingin",
-            "Menyuplai gland sealing uap pada turbin uap",
-            "Prapemanasan deaerator dan perpipaan uap"
+            "Menghasilkan uap bantu untuk kebutuhan start-up, heating, sealing, dan utilitas ketika uap utama belum tersedia."
         ]
     },
     "b22": {
@@ -275,12 +249,10 @@ export const buildingData = {
         name: "Administration Building",
         zona: "D",
         dimensi: "± 1.500 m²",
-        shortDesc: "Gedung perkantoran manajemen utama dan administrasi operasional PLTGU Cilegon.",
-        description: "Administration Building merupakan pusat administrasi, manajemen perusahaan, keuangan, SDM, IT, dan pertemuan resmi operasional PLTGU Cilegon.",
+        shortDesc: "Gedung yang digunakan untuk kegiatan administrasi, koordinasi, perencanaan, dan fungsi pendukung operasional pembangkit.",
+        description: "Gedung yang digunakan untuk kegiatan administrasi, koordinasi, perencanaan, dan fungsi pendukung operasional pembangkit.",
         fungsi: [
-            "Pusat kegiatan manajemen dan administrasi perusahaan",
-            "Kantor staf engineering, SDM, keuangan, dan pimpinan unit",
-            "Ruang rapat utama dan penerimaan tamu resmi"
+            "Mendukung kegiatan administrasi, koordinasi, perencanaan, dan pengelolaan operasional pembangkit."
         ]
     },
         "b23": {
@@ -294,15 +266,13 @@ export const buildingData = {
     },
     "b24": {
         number: "b24",
-        name: "CCCW Pump",
+        name: "WWTP Room",
         zona: "C",
         dimensi: "± 400 m²",
-        shortDesc: "Gedung pusat kontrol dan pompa pengolahan air limbah kimia WWTP.",
-        description: "Waste Water Treatment Building menampung peralatan dosing bahan kimia, panel pengontrol otomatis, dan pompa pengolah limbah di kompleks WWTP.",
+        shortDesc: "Ruang kontrol dan peralatan pendukung sistem pengolahan air limbah atau Waste Water Treatment Plant.",
+        description: "Ruang kontrol dan peralatan pendukung sistem pengolahan air limbah atau Waste Water Treatment Plant.",
         fungsi: [
-            "Pusat kontrol dan peralatan dosing kimia pengolah limbah",
-            "Monitoring kualitas air olahan effluent WWTP",
-            "Pengoperasian sirkulasi koagulasi dan netralisasi pH"
+            "Menjadi ruang kontrol dan lokasi peralatan pendukung pengoperasian Waste Water Treatment Plant."
         ]
     },
     "b25": {
@@ -310,12 +280,10 @@ export const buildingData = {
         name: "Waste Water Treatment Plant",
         zona: "C",
         dimensi: "± 1.000 m²",
-        shortDesc: "Kompleks kolam pengolahan air limbah (WWTP) untuk proses pengolahan fisik-kimia.",
-        description: "Waste Water Treatment Plant (WWTP) mengolah seluruh limbah cair pembangkit (blow-down, pencucian, limbah laboratorium) melalui netralisasi, pengendapan, dan filtrasi.",
+        shortDesc: "Fasilitas pengolahan air limbah untuk memastikan kualitas air buangan memenuhi persyaratan sebelum dialirkan ke lingkungan.",
+        description: "Fasilitas pengolahan air limbah untuk memastikan kualitas air buangan memenuhi persyaratan sebelum dialirkan ke lingkungan.",
         fungsi: [
-            "Mengolah air limbah industri pembangkit agar memenuhi baku mutu",
-            "Netralisasi asam-basa dan pengendapan padatan tersuspensi",
-            "Memastikan air buangan aman sebelum dialirkan ke laut"
+            "Mengolah air limbah agar memenuhi persyaratan kualitas sebelum dibuang atau dimanfaatkan kembali."
         ]
     },
         "b26": {
@@ -329,41 +297,35 @@ export const buildingData = {
     },
     "b27": {
         number: "b27",
-        name: "Gas Storage Area (Nitrogen & CO2 Cylinders)",
+        name: "N2 Station",
         zona: "B",
         dimensi: "± 350 m²",
-        shortDesc: "Area penyimpanan tabung gas industri (Nitrogen, CO2, & gas pembersih).",
-        description: "Gas Storage Area menampung tabung-tabung bertekanan berisi gas nitrogen untuk purging saluran gas bumi dan CO2 untuk pemadam kebakaran/purging generator.",
+        shortDesc: "Fasilitas penyimpanan dan distribusi nitrogen yang digunakan untuk kebutuhan purging, blanketing, dan aplikasi pendukung lainnya.",
+        description: "Fasilitas penyimpanan dan distribusi nitrogen yang digunakan untuk kebutuhan purging, blanketing, dan aplikasi pendukung lainnya.",
         fungsi: [
-            "Penyimpanan tabung gas Nitrogen (N2) untuk purging jalur gas alam",
-            "Penyimpanan CO2 untuk pemadaman kebakaran dan pembilasan generator",
-            "Pengelolaan pasokan gas inert industri secara aman"
+            "Menyediakan nitrogen untuk kebutuhan purging, blanketing, inerting, dan keperluan operasional lainnya."
         ]
     },
     "b28": {
         number: "b28",
-        name: "Gas Reducing Station",
+        name: "Fuel Gas Compressor Station",
         zona: "B",
         dimensi: "± 500 m²",
-        shortDesc: "Stasiun pengatur dan penurun tekanan gas alam (Off-take Station) dari pipa pasokan PGN/Pertamina.",
-        description: "Gas Reducing Station menyaring, memanaskan, dan menurunkan tekanan gas bumi dari jalur pipa transmisi utama hingga mencapai tekanan aman operasi turbin gas.",
+        shortDesc: "Fasilitas kompresi gas bahan bakar untuk menaikkan dan menjaga tekanan gas sesuai kebutuhan operasi Gas Turbine.",
+        description: "Fasilitas kompresi gas bahan bakar untuk menaikkan dan menjaga tekanan gas sesuai kebutuhan operasi Gas Turbine.",
         fungsi: [
-            "Penurunan tekanan gas bumi secara terkontrol ke tekanan operasi turbin",
-            "Filtrasi partikel dan pemisahan cairan dari gas alam",
-            "Pengaturan debit dan pengukuran tekanan pasokan gas"
+            "Menaikkan dan menjaga tekanan gas bahan bakar agar sesuai dengan kebutuhan Gas Turbine."
         ]
     },
     "b29": {
         number: "b29",
-        name: "Makeup Water Tank",
+        name: "Make Up Water Tank",
         zona: "C",
         dimensi: "± 973 m²",
-        shortDesc: "Tangki penyimpanan air demineralisasi cadangan pengisi siklus uap.",
-        description: "Makeup Water Tank menampung air demin ber-purity tinggi untuk menggantikan kehilangan air siklus akibat blow-down boiler dan penguapan.",
+        shortDesc: "Tangki penyimpanan air tambahan yang digunakan untuk menggantikan kehilangan air pada sistem pembangkit.",
+        description: "Tangki penyimpanan air tambahan yang digunakan untuk menggantikan kehilangan air pada sistem pembangkit.",
         fungsi: [
-            "Menyimpan cadangan air demineralisasi kualitas tinggi",
-            "Menyokong kontinuitas pasokan air pengisi HRSG",
-            "Menjaga keseimbangan volume air siklus uap"
+            "Menyimpan air make-up untuk menggantikan kehilangan air pada sistem pembangkit."
         ]
     },
     "b30": {
@@ -371,12 +333,10 @@ export const buildingData = {
         name: "Demineralized Water Treatment Building",
         zona: "C",
         dimensi: "± 800 m²",
-        shortDesc: "Gedung pemurnian air tawar menjadi air demineralisasi (Demin Plant).",
-        description: "Demineralized Water Treatment Building menampung bejana resin penukar ion (Cation, Anion, Mixed Bed) yang memurnikan air tawar hingga konduktivitas sangat rendah.",
+        shortDesc: "Fasilitas pengolahan air untuk menghasilkan air demineralisasi dengan kandungan mineral sangat rendah sebagai kebutuhan sistem air-uap.",
+        description: "Fasilitas pengolahan air untuk menghasilkan air demineralisasi dengan kandungan mineral sangat rendah sebagai kebutuhan sistem air-uap.",
         fungsi: [
-            "Pemurnian air hasil desalinasi menjadi air demin murni",
-            "Menghilangkan mineral dan silika pengganggu pipa boiler",
-            "Regenerasi resin penukar ion secara periodik"
+            "Mengolah air menjadi air demineralisasi berkualitas tinggi untuk kebutuhan boiler dan sistem air-uap."
         ]
     },
     "b31": {
@@ -384,25 +344,21 @@ export const buildingData = {
         name: "GT Electrical Building",
         zona: "A",
         dimensi: "± 600 m²",
-        shortDesc: "Gedung kelistrikan dan modul kontrol dedicated unit Turbin Gas.",
-        description: "GT Electrical Building menampung switchgear tegangan menengah/rendah, MCC, inverter, baterai DC, dan sistem kontrol instrumen khusus turbin gas.",
+        shortDesc: "Gedung yang menampung peralatan kelistrikan, kontrol, dan proteksi yang mendukung pengoperasian Gas Turbine.",
+        description: "Gedung yang menampung peralatan kelistrikan, kontrol, dan proteksi yang mendukung pengoperasian Gas Turbine.",
         fungsi: [
-            "Distribusi daya listrik auxiliary unit turbin gas",
-            "Menyimpan perlengkapan kontrol pneumatik/elektronik GT",
-            "Catu daya DC terproteksi baterai cadangan"
+            "Menampung peralatan kelistrikan, kontrol, proteksi, dan distribusi daya untuk Gas Turbine."
         ]
     },
     "b32": {
         number: "b32",
-        name: "Fire Water Pump Area",
+        name: "Fire Pump Station",
         zona: "C",
         dimensi: "± 297 m²",
-        shortDesc: "Stasiun pompa utama sistem pemadam kebakaran (Electric, Diesel, & Jockey Pump).",
-        description: "Fire Water Pump Area menampung pompa-pompa pemadam bertekanan tinggi yang memompa air dari tangki pemadam ke seluruh jaringan hydrant dan sprinkler.",
+        shortDesc: "Fasilitas pompa pemadam yang menyediakan tekanan dan aliran air untuk jaringan fire fighting di area pembangkit.",
+        description: "Fasilitas pompa pemadam yang menyediakan tekanan dan aliran air untuk jaringan fire fighting di area pembangkit.",
         fungsi: [
-            "Pasokan air bertekanan tinggi ke jaringan pemadam kebakaran",
-            "Operasi otomatis Diesel Fire Pump saat terjadi padam listrik",
-            "Jockey pump pembina tekanan stabil pipa pemadam"
+            "Menyediakan tekanan dan aliran air yang dibutuhkan oleh jaringan sistem pemadam kebakaran."
         ]
     },
     "b33": {
@@ -410,12 +366,10 @@ export const buildingData = {
         name: "Fire Water Tank",
         zona: "A",
         dimensi: "± 600 m²",
-        shortDesc: "Tangki penyimpanan air cadangan khusus proteksi kebakaran.",
-        description: "Fire Water Tank menyimpan volume air dalam jumlah besar yang khusus dialokasikan untuk pemadaman kebakaran di seluruh area PLTGU.",
+        shortDesc: "Tangki penyimpanan cadangan air khusus untuk sistem proteksi dan pemadaman kebakaran.",
+        description: "Tangki penyimpanan cadangan air khusus untuk sistem proteksi dan pemadaman kebakaran.",
         fungsi: [
-            "Penyimpanan air dedicated untuk emergency pemadaman kebakaran",
-            "Menjamin kecukupan air sesuai standar skenario NFPA",
-            "Pengisian ulang otomatis dari sistem penyuplai air"
+            "Menyimpan cadangan air khusus untuk kebutuhan sistem pemadam kebakaran."
         ]
     },
     "b34": {
@@ -423,38 +377,32 @@ export const buildingData = {
         name: "Raw Water Tank",
         zona: "C",
         dimensi: "± 468 m²",
-        shortDesc: "Tangki penampungan air mentah (air laut/PDAM) sebelum olahan desalinasi.",
-        description: "Raw Water Tank berfungsi sebagai penampung buffer air mentah baku yang dikirim dari pasokan utama sebelum diproses oleh unit Desalinasi.",
+        shortDesc: "Tangki penyimpanan air baku sebelum diproses lebih lanjut untuk berbagai kebutuhan operasional pembangkit.",
+        description: "Tangki penyimpanan air baku sebelum diproses lebih lanjut untuk berbagai kebutuhan operasional pembangkit.",
         fungsi: [
-            "Penampungan air mentah buffer sumber air baku",
-            "Pemerataan debit masukan ke unit Desalination Plant",
-            "Cadangan air proses awal pembangkit"
+            "Menampung air baku sebelum diproses atau digunakan untuk kebutuhan utilitas pembangkit."
         ]
     },
     "b35": {
         number: "b35",
-        name: "Emergency D/G Building",
+        name: "Emergency Diesel Generator Building",
         zona: "A",
         dimensi: "± 300 m²",
-        shortDesc: "Gedung generator diesel darurat (Emergency Diesel Generator) untuk pasokan blackout.",
-        description: "Emergency D/G Building berisi generator mesin diesel yang otomatis menyala saat blackout total untuk memberi daya pada beban esensial penyelamat turbin.",
+        shortDesc: "Gedung yang menampung Emergency Diesel Generator sebagai sumber listrik darurat ketika suplai listrik utama tidak tersedia.",
+        description: "Gedung yang menampung Emergency Diesel Generator sebagai sumber listrik darurat ketika suplai listrik utama tidak tersedia.",
         fungsi: [
-            "Catu daya listrik darurat otomatis saat pemadaman total (blackout)",
-            "Menyuplai emergency lube oil pump dan turning gear turbin",
-            "Mendukung prosedur penyetopan aman (safe shutdown)"
+            "Menyediakan sumber listrik darurat ketika sumber listrik utama dan cadangan normal tidak tersedia."
         ]
     },
     "b36": {
         number: "b36",
-        name: "Distillate Oil Tank",
+        name: "HSD Area",
         zona: "B",
         dimensi: "± 2.500 m²",
-        shortDesc: "Tangki penyimpanan utama bahan bakar minyak High Speed Diesel (HSD).",
-        description: "Distillate Oil Tank adalah tangki silinder raksasa yang menyimpan minyak HSD sebagai bahan bakar cadangan/utama turbin gas saat pasokan gas terhenti.",
+        shortDesc: "Area penyimpanan, penanganan, dan distribusi High Speed Diesel sebagai bahan bakar pendukung atau cadangan.",
+        description: "Area penyimpanan, penanganan, dan distribusi High Speed Diesel sebagai bahan bakar pendukung atau cadangan.",
         fungsi: [
-            "Penyimpanan stok minyak HSD skala besar untuk pembangkitan",
-            "Menjamin ketahanan pasokan bahan bakar minyak",
-            "Dilengkapi tanggul penahan tumpahan (bunding wall)"
+            "Menjadi area penyimpanan, penanganan, dan distribusi High Speed Diesel untuk kebutuhan pembangkit."
         ]
     },
     "b37": {
@@ -475,25 +423,21 @@ export const buildingData = {
         name: "Guard House",
         zona: "D",
         dimensi: "± 119 m²",
-        shortDesc: "Pos keamanan pintu gerbang utama PLTGU (Pos Gate & Akses Masuk).",
-        description: "Guard House adalah pos pemeriksa keamanan utama tempat verifikasi identitas personel, tamu, dan kendaraan yang masuk ke kawasan PLTGU Cilegon.",
+        shortDesc: "Pos penjagaan yang berfungsi untuk pengawasan keamanan serta pengendalian akses orang dan kendaraan.",
+        description: "Pos penjagaan yang berfungsi untuk pengawasan keamanan serta pengendalian akses orang dan kendaraan.",
         fungsi: [
-            "Pemeriksaan identitas dan izin akses personel serta tamu",
-            "Pengawasan lalu lintas kendaraan dan barang masuk-keluar",
-            "Pusat pemantauan CCTV gerbang depan"
+            "Melakukan pengawasan dan pengendalian akses orang maupun kendaraan ke area pembangkit."
         ]
     },
     "b39": {
         number: "b39",
-        name: "Turbine Oil Storage Tank (GT/ST Clean & Dirty Oil Tank)",
+        name: "hazardous and toxic waste storage facility",
         zona: "B",
         dimensi: "± 400 m²",
-        shortDesc: "Tangki penyimpanan oli pelumas bersih dan kotor untuk turbin gas & uap.",
-        description: "Turbine Oil Storage Tank menampung cadangan oli pelumas baru (clean oil) dan oli pelumas bekas/kotor (dirty oil) saat penggantian oli rutin turbin.",
+        shortDesc: "Fasilitas penyimpanan sementara limbah bahan berbahaya dan beracun sebelum dilakukan pengangkutan dan pengelolaan sesuai ketentuan.",
+        description: "Fasilitas penyimpanan sementara limbah bahan berbahaya dan beracun sebelum dilakukan pengangkutan dan pengelolaan sesuai ketentuan.",
         fungsi: [
-            "Penyimpanan oli pelumas turbin baru dan bekas",
-            "Fasilitas pemindahan oli saat overhaul turbin",
-            "Pencegahan tumpahan oli ke tanah industri"
+            "Menyimpan sementara limbah B3 secara aman sebelum dilakukan pengangkutan dan pengolahan lebih lanjut."
         ]
     },
     "b40": {
@@ -501,12 +445,10 @@ export const buildingData = {
         name: "Intake Structure",
         zona: "C",
         dimensi: "± 720 m²",
-        shortDesc: "Struktur bangunan pengambilan air laut (Water Intake) dengan saringan otomatis.",
-        description: "Intake Structure berada di tepi laut, dilengkapi travelling bar screen dan saluran penyaring kotoran laut sebelum air diambil oleh pompa pendingin.",
+        shortDesc: "Struktur pengambilan air dari sumber eksternal untuk memasok kebutuhan sistem pendingin maupun utilitas pembangkit.",
+        description: "Struktur pengambilan air dari sumber eksternal untuk memasok kebutuhan sistem pendingin maupun utilitas pembangkit.",
         fungsi: [
-            "Pengambilan air laut sebagai pasokan air pendingin dan desalinasi",
-            "Penyaringan kotoran, sampah, dan biota laut dengan bar screen",
-            "Perlindungan pompa dari penyumbatan benda asing"
+            "Mengambil air dari sumber eksternal sebagai suplai sistem pendingin dan kebutuhan utilitas pembangkit."
         ]
     },
     "b41": {
@@ -524,15 +466,13 @@ export const buildingData = {
     },
     "b42": {
         number: "b42",
-        name: "Fuel Oil Unloading Pump Area",
+        name: "Fuel Oil Unloading Area",
         zona: "B",
         dimensi: "± 300 m²",
-        shortDesc: "Stasiun pompa pembongkaran bahan bakar minyak HSD di luar benteng tangki b36.",
-        description: "Fuel Oil Unloading Pump Area berisi pompa-pompa pemindah berkapasitas tinggi untuk menyedot HSD dari area pembongkaran menuju tangki penerima.",
+        shortDesc: "Area penerimaan dan pembongkaran bahan bakar minyak dari kendaraan atau sarana pengangkut menuju sistem penyimpanan.",
+        description: "Area penerimaan dan pembongkaran bahan bakar minyak dari kendaraan atau sarana pengangkut menuju sistem penyimpanan.",
         fungsi: [
-            "Memompa minyak HSD dari armada tangki ke penyimpanan",
-            "Penyaringan kasar bahan bakar cair dari kotoran fisikal",
-            "Menjaga laju pembongkaran BBM agar efisien"
+            "Menjadi area penerimaan dan pemindahan bahan bakar minyak dari sarana pengangkut menuju sistem penyimpanan."
         ]
     },
     "b43": {
@@ -576,41 +516,35 @@ export const buildingData = {
     },
     "b46": {
         number: "b46",
-        name: "Gas Treatment Station",
+        name: "Fuel Gas Separator",
         zona: "B",
         dimensi: "± 400 m²",
-        shortDesc: "Stasiun pemurnian dan pengondisian gas alam di dekat Gas Reducing Station.",
-        description: "Gas Treatment Station menyaring kelembapan, mengatur temperatur gas alam dengan heater, dan memisahkan kondensat cair sebelum masuk ke ruang bakar turbin.",
+        shortDesc: "Peralatan yang memisahkan cairan, kondensat, atau partikel dari aliran gas bahan bakar sebelum gas digunakan pada sistem pembakaran.",
+        description: "Peralatan yang memisahkan cairan, kondensat, atau partikel dari aliran gas bahan bakar sebelum gas digunakan pada sistem pembakaran.",
         fungsi: [
-            "Pengondisian suhu dan kelembapan gas alam pasokan GT",
-            "Pemisahan kondensat hidrokarbon cair dari gas",
-            "Memastikan kualitas gas memenuhi spesifikasi pembakaran"
+            "Memisahkan cairan, kondensat, dan partikel dari gas bahan bakar sebelum masuk ke peralatan downstream."
         ]
     },
     "b47": {
         number: "b47",
-        name: "Demin Water Transfer Pump",
+        name: "Demin & Service Water Transfer Pump",
         zona: "C",
         dimensi: "± 200 m²",
-        shortDesc: "Pompa pemindah air demineralisasi dari tangki b29 menuju sistem pengisi HRSG.",
-        description: "Demin Water Transfer Pump memompa air demin murni ke deaerator dan condenser hotwell saat terjadi pengurangan level air pengisi boiler.",
+        shortDesc: "Pompa transfer yang menyalurkan air demineralisasi dan/atau service water menuju sistem dan peralatan yang membutuhkan.",
+        description: "Pompa transfer yang menyalurkan air demineralisasi dan/atau service water menuju sistem dan peralatan yang membutuhkan.",
         fungsi: [
-            "Mengalirkan air demin murni dari tangki penyimpanan ke boiler",
-            "Penjagaan level air pengisi HRSG secara otomatis",
-            "Penyuplai air makeup saat proses start-up"
+            "Memindahkan air demineralisasi dan service water dari tangki penyimpanan menuju sistem yang membutuhkan."
         ]
     },
     "b48": {
         number: "b48",
-        name: "Foam Spare Bottle Space",
+        name: "Foam SpareBottle Space",
         zona: "B",
         dimensi: "± 150 m²",
-        shortDesc: "Gudang penyimpanan tabung konsentrat busa pemadam kebakaran di yard tangki HSD.",
-        description: "Foam Spare Bottle Space menyimpan tabung-tabung busa pemadam (AFFF foam concentrate) cadangan untuk proteksi pemadaman api di area tangki minyak HSD.",
+        shortDesc: "Area penyimpanan tabung atau persediaan fire fighting foam sebagai cadangan untuk penanggulangan kebakaran tertentu.",
+        description: "Area penyimpanan tabung atau persediaan fire fighting foam sebagai cadangan untuk penanggulangan kebakaran tertentu.",
         fungsi: [
-            "Penyimpanan konsentrat foam pemadam kebakaran tangki BBM",
-            "Pengisian ulang cepat sistem pemadam busa otomatis",
-            "Perlindungan darurat dari bahaya kebakaran minyak"
+            "Menyimpan tabung atau persediaan foam pemadam sebagai cadangan untuk sistem proteksi kebakaran."
         ]
     },
     "b49": {
@@ -641,28 +575,24 @@ export const buildingData = {
     },
     "b51": {
         number: "b51",
-        name: "150 kV Substation Control Building",
+        name: "ST Building Area",
         zona: "A",
         dimensi: "± 400 m²",
-        shortDesc: "Gedung pusat kontrol dan panel proteksi Gardu Induk 150kV.",
-        description: "150 kV Substation Control Building berisi panel-panel relai proteksi digital, sistem SCADA switchyard, dan modul komunikasi jaringan transmisi 150kV.",
+        shortDesc: "Area bangunan Steam Turbine yang menampung turbin uap, generator, serta peralatan pendukung sistem pembangkitan tenaga uap.",
+        description: "Area bangunan Steam Turbine yang menampung turbin uap, generator, serta peralatan pendukung sistem pembangkitan tenaga uap.",
         fungsi: [
-            "Pusat kendali dan proteksi pemutus arus switchyard 150kV",
-            "Menyimpan relai proteksi transmisi digital dan sistem SCADA",
-            "Komunikasi tele-informasi dengan sistem pengatur beban transmisi"
+            "Menjadi area utama penempatan Steam Turbine, generator, serta peralatan pendukungnya."
         ]
     },
     "b52": {
         number: "b52",
-        name: "C.W Outfall / Outlet",
+        name: "Hydrogen Plant",
         zona: "D",
         dimensi: "± 800 m²",
-        shortDesc: "Saluran pelepasan akhir air pendingin kondenser dan effluent murni ke laut.",
-        description: "C.W Outfall / Outlet adalah saluran konstruksi pantai yang mengalirkan kembali air laut pendingin yang telah mendinginkan kondenser ke laut terbuka.",
+        shortDesc: "Fasilitas penyediaan atau penanganan hidrogen yang digunakan terutama untuk kebutuhan pendinginan generator dan sistem terkait.",
+        description: "Fasilitas penyediaan atau penanganan hidrogen yang digunakan terutama untuk kebutuhan pendinginan generator dan sistem terkait.",
         fungsi: [
-            "Pelepasan kembali air laut pendingin ke laut lepas",
-            "Konstruksi pemecah arus pengurang dampak termal laut",
-            "Pemantauan kualitas air buangan akhir (online analyzer)"
+            "Menyediakan hidrogen untuk kebutuhan pendinginan generator atau sistem terkait."
         ]
     },
     "b53": {
@@ -683,12 +613,10 @@ export const buildingData = {
         name: "Mosque",
         zona: "D",
         dimensi: "± 245 m²",
-        shortDesc: "Masjid PLTGU Cilegon untuk tempat ibadah karyawan dan warga sekitar.",
-        description: "Masjid PLTGU Cilegon menyediakan sarana ibadah yang nyaman bagi karyawan Muslim dan tamu di lingkungan pembangkit.",
+        shortDesc: "Fasilitas ibadah yang disediakan bagi pekerja dan pengunjung di lingkungan pembangkit.",
+        description: "Fasilitas ibadah yang disediakan bagi pekerja dan pengunjung di lingkungan pembangkit.",
         fungsi: [
-            "Fasilitas ibadah sholat 5 waktu dan Sholat Jumat",
-            "Pusat kegiatan kerohanian Islam karyawan",
-            "Sarana pembinaan mental dan keagamaan"
+            "Menyediakan fasilitas ibadah bagi pekerja dan pengunjung."
         ]
     },
     "b55": {
@@ -696,12 +624,10 @@ export const buildingData = {
         name: "HSD Treatment Plant",
         zona: "B",
         dimensi: "± 400 m²",
-        shortDesc: "Gedung pemurnian dan penyaringan minyak HSD di sebelah kiri benteng tangki b36.",
-        description: "HSD Treatment Plant menyaring kontaminan, memisahkan kandungan air, dan memanaskan minyak HSD agar memenuhi spesifikasi injeksi combustor turbin gas.",
+        shortDesc: "Fasilitas pengolahan bahan bakar HSD untuk menjaga kebersihan dan kualitas bahan bakar sebelum digunakan oleh peralatan pembangkit.",
+        description: "Fasilitas pengolahan bahan bakar HSD untuk menjaga kebersihan dan kualitas bahan bakar sebelum digunakan oleh peralatan pembangkit.",
         fungsi: [
-            "Pemurnian minyak HSD dari partikel dan kadar air",
-            "Pemanasan bahan bakar menurunkan viskositas alir",
-            "Pemeriksaan mutu minyak HSD sebelum pembakaran"
+            "Mengolah dan meningkatkan kualitas HSD sebelum digunakan sebagai bahan bakar peralatan pembangkit."
         ]
     },
     "b56": {
@@ -709,12 +635,10 @@ export const buildingData = {
         name: "Desalination Plant",
         zona: "C",
         dimensi: "± 1.693 m²",
-        shortDesc: "Pabrik pengolahan air laut menjadi air tawar (Reverse Osmosis / Multi-Stage Flash).",
-        description: "Desalination Plant mengubah air laut menjadi air tawar murni dengan memisahkan kadar garam secara intensif sebagai pasokan air demin pembangkit.",
+        shortDesc: "Fasilitas pengolahan air laut atau air berkadar garam tinggi menjadi air dengan kadar garam rendah untuk kebutuhan pembangkit.",
+        description: "Fasilitas pengolahan air laut atau air berkadar garam tinggi menjadi air dengan kadar garam rendah untuk kebutuhan pembangkit.",
         fungsi: [
-            "Mengolah air laut menjadi air tawar murni berkapasitas tinggi",
-            "Pemasok utama air baku untuk Demin Plant",
-            "Pengurangan kadar garam dan mineral terlarut"
+            "Mengurangi kandungan garam pada air laut untuk menghasilkan air olahan yang dapat diproses lebih lanjut."
         ]
     },
     "b57": {
@@ -722,38 +646,32 @@ export const buildingData = {
         name: "Fuel Oil Receiving Tank",
         zona: "B",
         dimensi: "± 600 m²",
-        shortDesc: "Tangki penerima awal minyak HSD dari pembongkaran truk sebelum masuk tangki b36.",
-        description: "Fuel Oil Receiving Tank menampung sementara minyak HSD dari unloading pump untuk proses pengendapan awal sebelum dipompa ke Distillate Oil Tank.",
+        shortDesc: "Tangki penerima awal bahan bakar minyak sebelum bahan bakar diproses atau dipindahkan ke tangki penyimpanan utama.",
+        description: "Tangki penerima awal bahan bakar minyak sebelum bahan bakar diproses atau dipindahkan ke tangki penyimpanan utama.",
         fungsi: [
-            "Penampungan sementara minyak HSD hasil bongkar muat",
-            "Pengendapan gravitasi awal air dan endapan minyak",
-            "Buffer penyeimbang debit transfer bahan bakar"
+            "Menampung bahan bakar minyak yang baru diterima sebelum dipindahkan ke tangki penyimpanan atau sistem berikutnya."
         ]
     },
     "b58": {
         number: "b58",
-        name: "Seal Pit",
+        name: "Outfall",
         zona: "D",
         dimensi: "± 200 m²",
-        shortDesc: "Struktur bak penahan (Seal Pit) di tepi saluran pembuangan b52.",
-        description: "Seal Pit menjaga batas kedap air (hydraulic seal) pada ujung saluran pendingin outfall agar tidak terjadi penyedotan balik air laut dan tekanan udara buang.",
+        shortDesc: "Titik atau struktur pembuangan akhir air yang telah digunakan atau diolah dari area pembangkit menuju badan air penerima.",
+        description: "Titik atau struktur pembuangan akhir air yang telah digunakan atau diolah dari area pembangkit menuju badan air penerima.",
         fungsi: [
-            "Menjaga penutupan hidrolik (water seal) saluran buangan",
-            "Mencegah efek siphon balik dan arus ombak laut",
-            "Stabilisasi pelepasan air pendingin ke saluran pantai"
+            "Menjadi titik pembuangan akhir air hasil proses atau air pendingin menuju badan air penerima."
         ]
     },
     "b59": {
         number: "b59",
-        name: "Garage",
+        name: "Parking Lot",
         zona: "D",
         dimensi: "± 311 m²",
-        shortDesc: "Gedung garasi & tempat parkir terlindung kendaraan operasional PLTGU.",
-        description: "Garage menyediakan tempat parkir dan pemeliharaan rutin untuk armada mobil dinas, truck, dan alat transportasi internal PLTGU.",
+        shortDesc: "Area parkir kendaraan bagi pegawai, tamu, maupun kendaraan operasional.",
+        description: "Area parkir kendaraan bagi pegawai, tamu, maupun kendaraan operasional.",
         fungsi: [
-            "Garasi dan pemeliharaan kendaraan dinas operasional",
-            "Perlindungan armada transportasi dari cuaca",
-            "Manajemen pengelolaan alokasi armada perusahaan"
+            "Menyediakan area parkir bagi kendaraan pegawai, tamu, dan kendaraan operasional."
         ]
     },
     "b60": {
@@ -774,25 +692,21 @@ export const buildingData = {
         name: "Laboratory",
         zona: "A",
         dimensi: "± 250 m²",
-        shortDesc: "Fasilitas laboratorium pengujian kualitas air, minyak, dan bahan kimia operasional.",
-        description: "Laboratorium pengujian kimia dan kualitas air bahan baku (raw water), air demin, minyak pelumas, dan bahan bakar untuk menjamin keandalan operasional pembangkit.",
+        shortDesc: "Fasilitas pengujian dan analisis sampel seperti air, bahan bakar, minyak, dan parameter kimia untuk mendukung pengendalian kualitas operasi.",
+        description: "Fasilitas pengujian dan analisis sampel seperti air, bahan bakar, minyak, dan parameter kimia untuk mendukung pengendalian kualitas operasi.",
         fungsi: [
-            "Pengujian kualitas air baku dan air demin boiler",
-            "Analisis laboratorium bahan bakar HSD dan minyak pelumas",
-            "Kontrol kualitas kimia air pendingin pembangkit"
+            "Melakukan pengujian dan analisis kualitas air, minyak, bahan bakar, serta parameter kimia lainnya."
         ]
     },
     "b62": {
         number: "b62",
-        name: "Gedung K3 (HSE Office)",
+        name: "HSE Office",
         zona: "D",
         dimensi: "± 300 m²",
-        shortDesc: "Gedung pusat keselamatan kerja, kesehatan lingkungan, dan pelatihan K3 karyawan.",
-        description: "Gedung operasional tim HSE (Health, Safety, and Environment) untuk pengelolaan keselamatan kerja, inspeksi peralatan K3, dan pelatihan tanggap darurat.",
+        shortDesc: "Kantor fungsi Health, Safety, and Environment yang mendukung pengelolaan keselamatan kerja, kesehatan, dan lingkungan.",
+        description: "Kantor fungsi Health, Safety, and Environment yang mendukung pengelolaan keselamatan kerja, kesehatan, dan lingkungan.",
         fungsi: [
-            "Pusat koordinasi operasional tim keselamatan K3 (HSE)",
-            "Ruang penyimpanan perlengkapan APD dan tanggap darurat",
-            "Ruang pengarahan dan induksi K3 karyawan & kontraktor"
+            "Mengelola kegiatan kesehatan kerja, keselamatan, lingkungan, serta pemenuhan aspek HSE di area pembangkit."
         ]
     },
     "b63": {
@@ -800,102 +714,109 @@ export const buildingData = {
         name: "Engineering Building",
         zona: "B",
         dimensi: "± 600 m²",
-        shortDesc: "Gedung kantor perencanaan teknik, rekayasa enjinering, dan sistem pembangkit.",
-        description: "Gedung kantor khusus tim enginering pemeliharaan, keandalan sistem pembangkit, dan perencanaan proyek teknis PLTGU Cilegon.",
+        shortDesc: "Gedung yang digunakan oleh fungsi teknik untuk kegiatan analisis, perencanaan, evaluasi, dan dukungan teknis pembangkit.",
+        description: "Gedung yang digunakan oleh fungsi teknik untuk kegiatan analisis, perencanaan, evaluasi, dan dukungan teknis pembangkit.",
         fungsi: [
-            "Pusat rekayasa dan perencanaan pemeliharaan teknik",
-            "Monitoring keandalan dan analisis efisiensi pembangkit",
-            "Ruang kerja insinyur teknik dan spesialis sistem"
+            "Mendukung kegiatan rekayasa, analisis teknis, evaluasi performa, dan perencanaan teknis pembangkit."
         ]
     },
     "b64": {
         number: "b64",
-        name: "Gardu Induk 150 kV AIS",
+        name: "Substation Building",
         zona: "A",
         dimensi: "± 800 m²",
-        shortDesc: "Fasilitas gardu induk transmisi sakelar listrik 150 kV (Air Insulated Switchgear).",
-        description: "Gardu induk transmisi daya listrik 150 kV berisolasi udara untuk menyalurkan energi listrik hasil olahan pembangkit ke sistem interkoneksi PLN.",
+        shortDesc: "Bangunan yang menampung peralatan distribusi, proteksi, kontrol, dan transformasi tenaga listrik pada sistem pembangkit.",
+        description: "Bangunan yang menampung peralatan distribusi, proteksi, kontrol, dan transformasi tenaga listrik pada sistem pembangkit.",
         fungsi: [
-            "Penyaluran daya listrik 150 kV ke jaringan transmisi PLN",
-            "Proteksi dan pemutus daya utama sistem kelistrikan",
-            "Fasilitas isolasi transmisi tegangan tinggi"
+            "Menampung peralatan distribusi, proteksi, kontrol, dan switching sistem kelistrikan pembangkit."
         ]
     },
     "b65": {
         number: "b65",
-        name: "Pos Security Samping",
+        name: "security posts",
         zona: "D",
         dimensi: "± 60 m²",
-        shortDesc: "Pos pemeriksaan keamanan kendaraan & akses masuk gerbang samping.",
-        description: "Pos pos penjagaan keamanan pintu masuk samping untuk pemeriksaan dokumen kendaraan operasional dan pengawasan akses lalu lintas kawasan.",
+        shortDesc: "Pos keamanan yang digunakan untuk pengawasan area, patroli, serta pengendalian akses di titik-titik tertentu.",
+        description: "Pos keamanan yang digunakan untuk pengawasan area, patroli, serta pengendalian akses di titik-titik tertentu.",
         fungsi: [
-            "Pemeriksaan akses gerbang samping dan lalu lintas logistik",
-            "Pos penyiagaan personel keamanan fisik kawasan",
-            "Pengawasan perbatasan luar area fasilitas pembangkit"
+            "Melaksanakan pengawasan keamanan dan pengendalian akses pada titik-titik tertentu di area pembangkit."
         ]
     },
-
     "b66": {
         number: "b66",
-        name: "Safety Center / UPPK",
+        name: "Safety Center",
         zona: "D",
         dimensi: "± 350 m²",
-        shortDesc: "Pusat keselamatan kerja K3 & Unit Pelayanan Kesehatan Kerja.",
-        description: "Fasilitas keselamatan kerja K3, pusat klinik UPPK (Unit Pelayanan Kesehatan Kerja), dan pengawasan K3 karyawan.",
+        shortDesc: "Fasilitas pusat koordinasi keselamatan yang mendukung pelatihan, kesiapsiagaan, dan penanganan keadaan darurat.",
+        description: "Fasilitas pusat koordinasi keselamatan yang mendukung pelatihan, kesiapsiagaan, dan penanganan keadaan darurat.",
         fungsi: [
-            "Pusat penanganan kesehatan dan K3 karyawan",
-            "Klinik pelayanan kesehatan kerja (UPPK)",
-            "Ruang pertolongan pertama (P3K)"
+            "Menjadi pusat koordinasi, pelatihan, kesiapsiagaan, dan penanganan keselamatan serta keadaan darurat."
         ]
     },
     "b67": {
         number: "b67",
-        name: "Area BSM (Berkah Swadaya Mandiri) & Sakopi",
+        name: "BSM Mart & Sakopi",
         zona: "D",
         dimensi: "± 400 m²",
-        shortDesc: "Fasilitas kantin, minimarket BSM, dan Cafe Sakopi.",
-        description: "Kawasan pelayanan karyawan yang mencakup minimarket BSM, pujasera/kantin, dan tempat istirahat Cafe Sakopi.",
+        shortDesc: "Fasilitas penunjang bagi pekerja yang menyediakan kebutuhan harian, makanan, atau minuman di lingkungan pembangkit.",
+        description: "Fasilitas penunjang bagi pekerja yang menyediakan kebutuhan harian, makanan, atau minuman di lingkungan pembangkit.",
         fungsi: [
-            "Fasilitas minimarket Koperasi BSM karyawan",
-            "Kantin dan area katering makanan karyawan",
-            "Tempat istirahat dan Cafe Sakopi"
+            "Menyediakan kebutuhan konsumsi dan kebutuhan harian bagi pekerja di lingkungan pembangkit."
         ]
     },
     "b68": {
         number: "b68",
-        name: "Area Solar Panel & Rumah Bibit",
+        name: "plant nursery",
         zona: "D",
         dimensi: "± 500 m²",
-        shortDesc: "Instalasi panel surya PV & green house pembibitan tanaman penghijauan.",
-        description: "Area fasilitas energi terbarukan instalasi Solar Panel PV serta rumah pembibitan tanaman (Green House) untuk program penghijauan lingkungan kawasan PLTGU Cilegon.",
+        shortDesc: "Area pembibitan dan pemeliharaan tanaman yang mendukung penghijauan serta pengelolaan lingkungan pembangkit.",
+        description: "Area pembibitan dan pemeliharaan tanaman yang mendukung penghijauan serta pengelolaan lingkungan pembangkit.",
         fungsi: [
-            "Pembangkit listrik tenaga surya (PV) energi bersih internal",
-            "Pembibitan pohon dan tanaman reboisasi kawasan",
-            "Fasilitas edukasi lingkungan hidup perusahan"
+            "Menjadi tempat pembibitan dan pemeliharaan tanaman untuk mendukung penghijauan dan pengelolaan lingkungan."
         ]
     },
     "b69": {
         number: "b69",
-        name: "Area Olahraga / Lapangan",
+        name: "tennis court",
         zona: "D",
         dimensi: "± 600 m²",
-        shortDesc: "Fasilitas lapangan olahraga serbaguna karyawan.",
-        description: "Lapangan olahraga serbaguna terbuka untuk kegiatan fisik, olahraga tenis/badminton/futsal karyawan PLTGU Cilegon.",
+        shortDesc: "Fasilitas olahraga yang disediakan untuk mendukung kebugaran dan aktivitas rekreasi pekerja.",
+        description: "Fasilitas olahraga yang disediakan untuk mendukung kebugaran dan aktivitas rekreasi pekerja.",
         fungsi: [
-            "Fasilitas olahraga dan kebugaran karyawan",
-            "Kegiatan turnamen olahraga internal perusahan"
+            "Menyediakan sarana olahraga dan kebugaran bagi pekerja."
         ]
     },
     "b70": {
         number: "b70",
-        name: "Gedung Parkir Samping",
+        name: "clinic",
         zona: "D",
         dimensi: "± 200 m²",
-        shortDesc: "Gedung penunjang parkir dan penyimpanan operasional samping.",
-        description: "Fasilitas gedung parkir samping dan area tempat teduh kendaraan operasional.",
+        shortDesc: "Fasilitas pelayanan kesehatan untuk pemeriksaan awal, pertolongan pertama, dan penanganan medis dasar bagi pekerja maupun pengunjung.",
+        description: "Fasilitas pelayanan kesehatan untuk pemeriksaan awal, pertolongan pertama, dan penanganan medis dasar bagi pekerja maupun pengunjung.",
         fungsi: [
-            "Area parkir penunjang kendaraan operasional",
-            "Fasilitas penyimpanan peralatan pendukung"
+            "Memberikan pelayanan kesehatan dasar, pemeriksaan, pertolongan pertama, dan penanganan medis awal."
+        ]
+    },
+    "b_phe": {
+        number: "PHE",
+        name: "Gas Metering Station PHE",
+        zona: "B",
+        dimensi: "-",
+        shortDesc: "Fasilitas pengukuran dan pemantauan aliran gas yang dipasok dari PHE sebelum digunakan sebagai bahan bakar pembangkit.",
+        description: "Fasilitas pengukuran dan pemantauan aliran gas yang dipasok dari PHE sebelum digunakan sebagai bahan bakar pembangkit. Sistem ini digunakan untuk memantau parameter penting seperti tekanan, temperatur, laju alir, dan jumlah gas yang disalurkan ke PLTGU.",
+        fungsi: [
+            "Mengukur dan memantau tekanan, temperatur, laju alir, serta jumlah pasokan gas dari PHE yang masuk ke PLTGU."
+        ]
+    },
+    "b_pgn": {
+        number: "PGN",
+        name: "Gas Metering Station PGN",
+        zona: "B",
+        dimensi: "-",
+        shortDesc: "Fasilitas pengukuran dan pemantauan aliran gas yang dipasok dari PGN sebelum masuk ke sistem bahan bakar pembangkit.",
+        description: "Fasilitas pengukuran dan pemantauan aliran gas yang dipasok dari PGN sebelum masuk ke sistem bahan bakar pembangkit. Peralatan ini berfungsi memastikan kuantitas dan kondisi gas yang diterima sesuai dengan kebutuhan operasi serta mendukung pencatatan konsumsi gas.",
+        fungsi: [
+            "Mengukur dan memantau parameter serta kuantitas pasokan gas dari PGN sebelum digunakan sebagai bahan bakar pembangkit."
         ]
     }
 };
@@ -1088,15 +1009,24 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         popoverDesc.textContent = desc;
 
-        // Auto-load thumbnail dari allImagePaths matching folderName atau buildingId
+        // Auto-load thumbnail dari allImagePaths matching folderName, buildingId, atau 01.png
+        const numStr = buildingId.replace(/[^0-9]/g, '');
+        const numPadded = numStr.padStart(2, '0');
         const folderName = buildingId + '(' + data.name.replace(/[\/\\:*?"<>|]/g, '-') + ')';
         const folderPathMatcher = `../public/buildings/${folderName}/`.toLowerCase();
         const folderPathMatcherFallback = `../public/buildings/${buildingId}/`.toLowerCase();
+        const folderPathMatcherPadded = `../public/buildings/${numPadded}/`.toLowerCase();
 
         let thumbPath = allImagePaths.find(path => {
             const normPath = path.replace(/\\/g, '/');
             const lowerPath = normPath.toLowerCase();
-            const isInsideFolder = lowerPath.startsWith(folderPathMatcher) || lowerPath.startsWith(folderPathMatcherFallback);
+            const fileName = normPath.split('/').pop().toLowerCase();
+            const fileNameNoExt = fileName.replace(/\.[^/.]+$/, "");
+
+            if (fileNameNoExt === numPadded || fileNameNoExt === numStr || fileNameNoExt === 'b' + numStr || fileNameNoExt === 'b' + numPadded) {
+                return true;
+            }
+            const isInsideFolder = lowerPath.startsWith(folderPathMatcher) || lowerPath.startsWith(folderPathMatcherFallback) || lowerPath.startsWith(folderPathMatcherPadded);
             const isThumb = lowerPath.endsWith('/thumb.jpg') || 
                             lowerPath.endsWith('/thumb.jpeg') || 
                             lowerPath.endsWith('/thumb.png') || 
@@ -1104,12 +1034,18 @@ document.addEventListener("DOMContentLoaded", () => {
             return isInsideFolder && isThumb;
         });
 
-        // Fallback: jika tidak ada file thumb.*, gunakan gambar pertama di folder tersebut
+        // Fallback: gunakan gambar pertama di folder atau yang cocok dengan nomor
         if (!thumbPath) {
             const folderImages = allImagePaths.filter(path => {
                 const normPath = path.replace(/\\/g, '/');
                 const lowerPath = normPath.toLowerCase();
-                return lowerPath.startsWith(folderPathMatcher) || lowerPath.startsWith(folderPathMatcherFallback);
+                const fileName = normPath.split('/').pop().toLowerCase();
+                const fileNameNoExt = fileName.replace(/\.[^/.]+$/, "");
+
+                if (fileNameNoExt === numPadded || fileNameNoExt === numStr || fileNameNoExt === 'b' + numStr || fileNameNoExt === 'b' + numPadded) {
+                    return true;
+                }
+                return lowerPath.startsWith(folderPathMatcher) || lowerPath.startsWith(folderPathMatcherFallback) || lowerPath.startsWith(folderPathMatcherPadded);
             }).sort();
             if (folderImages.length > 0) {
                 thumbPath = folderImages[0];
@@ -1193,14 +1129,17 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById('modalFungsiSection').style.display = 'none';
         }
 
-        // Gallery — auto-detect photos from /buildings/<id>/ and sub-folders (floors)
+        // Gallery — auto-detect photos from /buildings/<id>/, sub-folders, or direct <01.png> files
         const galleryContent = document.getElementById('galleryContent');
         const gallerySection = document.getElementById('modalGallery');
         galleryContent.innerHTML = '';
 
+        const numStr = buildingId.replace(/[^0-9]/g, '');
+        const numPadded = numStr.padStart(2, '0');
         const folderName = buildingId + '(' + data.name.replace(/[\/\\:*?"<>|]/g, '-') + ')';
         const folderPathMatcher = `../public/buildings/${folderName}/`.toLowerCase();
         const folderPathMatcherFallback = `../public/buildings/${buildingId}/`.toLowerCase();
+        const folderPathMatcherPadded = `../public/buildings/${numPadded}/`.toLowerCase();
 
         // Categorize photos into root photos and floor-grouped photos
         const rootPhotos = [];
@@ -1210,38 +1149,42 @@ document.addEventListener("DOMContentLoaded", () => {
         allImagePaths.forEach(path => {
             const normPath = path.replace(/\\/g, '/');
             const lowerPath = normPath.toLowerCase();
+            const fileName = normPath.split('/').pop();
+            const fileNameLower = fileName.toLowerCase();
+            const fileNameNoExt = fileNameLower.replace(/\.[^/.]+$/, "");
 
-            if (lowerPath.startsWith(folderPathMatcher) || lowerPath.startsWith(folderPathMatcherFallback)) {
-                if (lowerPath.endsWith('/thumb.jpg') || 
-                    lowerPath.endsWith('/thumb.jpeg') || 
-                    lowerPath.endsWith('/thumb.png') || 
-                    lowerPath.endsWith('/thumb.webp')) {
+            const isDirectMatch = (fileNameNoExt === numPadded || fileNameNoExt === numStr || fileNameNoExt === 'b' + numStr || fileNameNoExt === 'b' + numPadded);
+            const isFolderMatch = lowerPath.startsWith(folderPathMatcher) || lowerPath.startsWith(folderPathMatcherFallback) || lowerPath.startsWith(folderPathMatcherPadded);
+
+            if (isDirectMatch || isFolderMatch) {
+                if (fileNameLower.startsWith('thumb.')) {
                     thumbPhoto = { url: normPath.replace('../public', ''), title: 'Foto Utama / Thumbnail', fileName: 'thumb', originalPath: path };
                     return;
                 }
                 
                 const url = normPath.replace('../public', '');
-                const fileName = normPath.split('/').pop();
                 const match = fileName.match(/\((.*?)\)/);
-                const title = match ? match[1] : '';
+                const title = match ? match[1] : data.name;
 
-                // Determine which folder the file lives in
                 const matcherLength = lowerPath.startsWith(folderPathMatcher) 
                     ? folderPathMatcher.length 
-                    : folderPathMatcherFallback.length;
-                
-                const relativePath = normPath.substring(matcherLength);
-                const pathParts = relativePath.split('/');
-                
-                if (pathParts.length > 1) {
-                    // File is in a sub-folder (floor)
-                    const floorName = pathParts[0]; // e.g., "Lt 1", "Lt 2", "Lt Dasar"
-                    if (!floorPhotos[floorName]) floorPhotos[floorName] = [];
-                    floorPhotos[floorName].push({ url, title, fileName, originalPath: path });
-                } else {
-                    // File is in root folder
-                    rootPhotos.push({ url, title, fileName, originalPath: path });
+                    : lowerPath.startsWith(folderPathMatcherFallback)
+                        ? folderPathMatcherFallback.length
+                        : lowerPath.startsWith(folderPathMatcherPadded)
+                            ? folderPathMatcherPadded.length
+                            : 0;
+
+                if (isFolderMatch && matcherLength > 0 && matcherLength < normPath.length) {
+                    const relativePath = normPath.substring(matcherLength);
+                    const pathParts = relativePath.split('/');
+                    if (pathParts.length > 1) {
+                        const floorName = pathParts[0];
+                        if (!floorPhotos[floorName]) floorPhotos[floorName] = [];
+                        floorPhotos[floorName].push({ url, title, fileName, originalPath: path });
+                        return;
+                    }
                 }
+                rootPhotos.push({ url, title, fileName, originalPath: path });
             }
         });
 
