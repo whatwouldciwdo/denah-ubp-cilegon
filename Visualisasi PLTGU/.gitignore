@@ -1,0 +1,11 @@
+# Video files — disimpan lokal di kiosk, TIDAK diupload ke GitHub
+public/videos/
+dist/videos/
+*.mp4
+*.mkv
+*.avi
+*.mov
+*.wmv
+
+# Dependencies
+node_modules/
